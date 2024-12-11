@@ -29,6 +29,12 @@ public class PauseGame:MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         GameObject.Find("pauseMenu").GetComponent<Canvas>().enabled = false;
     }
+
+
+    public void Settings()
+    {
+        Debug.Log("Settings");
+    }
     
     void Update()
     {
