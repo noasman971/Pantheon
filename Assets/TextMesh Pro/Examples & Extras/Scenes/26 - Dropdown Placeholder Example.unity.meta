@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Tile Palette/New Tile Palette.prefab.meta
+guid: 1f3ab11d76d112e4a842d4925461678a
+PrefabImporter:
+========
 guid: 0851605490a599b46b6ac5cb681d93ea
 DefaultImporter:
+>>>>>>>> 39bf8caaab4c8178896170a1101abf4445e66a26:Assets/TextMesh Pro/Examples & Extras/Scenes/26 - Dropdown Placeholder Example.unity.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
