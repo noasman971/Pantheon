@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class options : MonoBehaviour
 {
     public GameObject panel;
     private bool visible = false;
     
-    public Dropdown DResolution;
+    public TMP_Dropdown DResolution;
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape))
