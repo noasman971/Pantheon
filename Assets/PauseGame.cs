@@ -31,10 +31,11 @@ public class PauseGame:MonoBehaviour {
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.Confined;
                 btn = GameObject.Find("returnGame").GetComponent<Button>();
-                btn.onClick.AddListener(ReturnToGame);
             }
             else
             {
+
+
                 GameObject.Find("PF Player").GetComponent<TopDownCharacterController>().enabled = true;
                 Time.timeScale = 1;
                 Cursor.visible = false;
@@ -53,8 +54,4 @@ public class PauseGame:MonoBehaviour {
         GameObject.Find("pauseMenu").GetComponent<Canvas>().enabled = false;
     }
 
-    private void OnDisable()
-    {
-        btn.onClick.RemoveAllListeners();
-    }
 }
