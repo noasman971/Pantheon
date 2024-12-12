@@ -4,7 +4,8 @@ using UnityEngine;
 public class hero : MonoBehaviour
 {
     Rigidbody2D rb;
-    public float speed  = 5f;
+    public float speed_run = 10f;
+    public float speed  = 3f;
     public float speed_esquive = 20f;
     Vector2 dir;
     Animator anim;
@@ -24,13 +25,15 @@ public class hero : MonoBehaviour
     {
         if (!isEsquive) 
         {
-            rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
-        }
+            float currentSpeed = Input.GetKey(KeyCode.Space) ? speed_run : speed;
+            rb.MovePosition(rb.position + dir * currentSpeed * Time.fixedDeltaTime);        }
         else 
         {
             canDash = false;
             StartCoroutine(Dash());
         }
+        
+
     }
 
     void Update()
@@ -42,7 +45,6 @@ public class hero : MonoBehaviour
         {
             isEsquive = true;
         }
-        
         SetParam();
     }
 
@@ -79,5 +81,7 @@ public class hero : MonoBehaviour
         yield return new WaitForSeconds(dashCoolDown);
         canDash = true;
     }
+    
+    
 }
 
