@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;  // Nécessaire pour accéder aux éléments UI comme Button
 
 public class HideObjectOnClick : MonoBehaviour
 {
@@ -12,8 +11,7 @@ public class HideObjectOnClick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // S'assurer que le bouton a bien un écouteur d'événement
-        hideButton.onClick.AddListener(HideObject);
+
     }
 
     // Fonction qui rend l'objet invisible

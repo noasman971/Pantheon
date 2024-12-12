@@ -37,6 +37,9 @@ public class PauseGame:MonoBehaviour {
 
     public void MainMenu()
     {
+        GameObject.Find("PF Player").GetComponent<TopDownCharacterController>().enabled = true;
+        Time.timeScale = 1;
+        Cursor.visible = true;
         SceneManager.LoadScene("Badis");
 
     }

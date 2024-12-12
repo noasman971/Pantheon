@@ -6,17 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/acceuil/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/jeu test/fake jeu.unity
-    guid: b481e84f06127304bae73781e7234143
-  - enabled: 1
     path: Assets/Scenes/acceuil/Badis.unity
     guid: 55df8568495666c44a070e8950e48f14
   - enabled: 1
-    path: Assets/Scenes/Parametre/settings.unity
-    guid: aa0079d6c7904524880065a47da2787d
+    path: Assets/zone1/Scene/FirstZone.unity
+    guid: 86e89bd9e4a9c5245a015cf17e3c0aae
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100,
       type: 3}
