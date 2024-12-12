@@ -6,6 +6,7 @@ public class buttoncontroller : MonoBehaviour
 
 
     public void SettingsButton() {
+        SceneManager.LoadScene("settings");
         Debug.Log("Settings Button Press");
         
         }
