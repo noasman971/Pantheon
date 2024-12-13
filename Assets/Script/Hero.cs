@@ -38,9 +38,13 @@ public class hero : MonoBehaviour
 
     void Update()
     {
-        dir.x = Input.GetAxisRaw("Horizontal");
-        dir.y = Input.GetAxisRaw("Vertical");
-        // rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
+        dir.x = 0;
+        dir.y = 0;
+    
+        if (Input.GetKey(KeyCode.Q)) dir.x = -1; // Gauche
+        if (Input.GetKey(KeyCode.D)) dir.x = 1;  // Droite
+        if (Input.GetKey(KeyCode.Z)) dir.y = 1;  // Haut
+        if (Input.GetKey(KeyCode.S)) dir.y = -1; // Bas
         if (Input.GetKeyDown(KeyCode.E) && canDash==true)
         {
             isEsquive = true;
