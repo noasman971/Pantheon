@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// classe de la vie du joueur
 public class PlayerHealth : MonoBehaviour
 {
     public int maxhealth = 100;

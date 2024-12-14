@@ -44,7 +44,7 @@ public class PauseGame:MonoBehaviour {
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyUp(KeyCode.JoystickButton0))
         {
             pause = !pause;
 
