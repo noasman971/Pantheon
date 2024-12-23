@@ -1,3 +1,4 @@
+using System.Net;
 using UnityEngine;
 
 // classe de la stamina du joueur
@@ -8,7 +9,8 @@ public class PlayerStamina : MonoBehaviour
     public float currentstamina;
     
     public StaminaBar staminaBar;
-    
+
+    public bool paused;
     
     void Start()
     {
@@ -43,17 +45,26 @@ public class PlayerStamina : MonoBehaviour
     // régénère la stamina jusqu'au maximum selon la variable en paramètre
     void RegenStamina(float regenStamina)
     {
-        if(currentstamina <= maxstamina)
+        if (paused)
         {
-            currentstamina += regenStamina;
-            staminaBar.SetStamina(currentstamina);
+            return;
+        }
+        else
+        {
+            if(currentstamina <= maxstamina)
+            {
+                currentstamina += regenStamina;
+                staminaBar.SetStamina(currentstamina);
+            
+            }
+
+            if (currentstamina > maxstamina)
+            {
+                currentstamina = maxstamina;
+            }
             
         }
 
-        if (currentstamina > maxstamina)
-        {
-            currentstamina = maxstamina;
-        }
     }
     
 
