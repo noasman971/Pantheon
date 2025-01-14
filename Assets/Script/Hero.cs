@@ -37,7 +37,7 @@ public class hero : MonoBehaviour
     {
         dir.x = Input.GetAxisRaw("Horizontal");
         dir.y = Input.GetAxisRaw("Vertical");
-        // rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
         if (Input.GetKeyDown(KeyCode.E) && canDash==true)
         {
             isEsquive = true;
