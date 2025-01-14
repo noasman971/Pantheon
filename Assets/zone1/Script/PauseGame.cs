@@ -1,13 +1,13 @@
-
-using Cainos.PixelArtTopDown_Basic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PauseGame:MonoBehaviour {
     private bool pause = false;
+    public PlayerStamina playerstamina;
     
     void Start()
     { 
         GameObject.Find("pauseMenu").GetComponent<Canvas>().enabled = false;
+        playerstamina = GameObject.Find("hero_7").GetComponent<PlayerStamina>();
 
     }
     
@@ -22,7 +22,8 @@ public class PauseGame:MonoBehaviour {
     public void Resume()
     {
         pause = false;
-        GameObject.Find("PF Player").GetComponent<TopDownCharacterController>().enabled = true;
+        playerstamina.paused = pause;
+        GameObject.Find("hero_7").GetComponent<hero>().enabled = true;
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -37,7 +38,7 @@ public class PauseGame:MonoBehaviour {
 
     public void MainMenu()
     {
-        GameObject.Find("PF Player").GetComponent<TopDownCharacterController>().enabled = true;
+        GameObject.Find("hero_7").GetComponent<hero>().enabled = true;
         Time.timeScale = 1;
         Cursor.visible = true;
         SceneManager.LoadScene("Badis");
@@ -46,13 +47,17 @@ public class PauseGame:MonoBehaviour {
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyUp(KeyCode.JoystickButton0))
         {
             pause = !pause;
+            playerstamina.paused = pause;
+
+
 
             if (pause)
-            {  GameObject.Find("PF Player").GetComponent<TopDownCharacterController>().enabled = false;
+            {  GameObject.Find("hero_7").GetComponent<hero>().enabled = false;
                 GameObject.Find("pauseMenu").GetComponent<Canvas>().enabled = true;
+                
                 Time.timeScale = 0;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.Confined;

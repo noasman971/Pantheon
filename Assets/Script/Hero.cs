@@ -1,32 +1,68 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class hero : MonoBehaviour
 {
+    
     Rigidbody2D rb;
-    public float speed  = 5f;
-    public float speed_esquive = 20f;
+    public float speed_run = 5f;
+    public float speed  = 3f;
+    public float speed_esquive = 15f;
+    public float runCost = 2f;
+    private float currentSpeed;
+    
     Vector2 dir;
     Animator anim;
+    
     public bool isEsquive = false;
 
     public bool canDash = true;
-    public float dashDuration = 1f;
+    public float dashDuration = 0.2f;
     public float dashCoolDown = 1f;
+    public float dashCost = 110f;
+    
+    private PlayerStamina playerStamina;
     void Start()
     {
         canDash = true;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        playerStamina = GetComponent<PlayerStamina>();
     }
 
+    
+    
+
+
+    public float SpeedPlayer()
+    {
+        if((Input.GetKey(KeyCode.Space) || (Input.GetKey(KeyCode.Joystick1Button4))) && (playerStamina.currentstamina >= runCost))
+        {
+            currentSpeed = speed_run;
+            playerStamina.Usestamina(runCost);
+        }
+        else if (playerStamina.currentstamina < runCost && (Input.GetKey(KeyCode.Space)))
+        {
+            currentSpeed = 0f;
+        }
+        
+        else
+        {
+            currentSpeed = speed;
+        }
+        return currentSpeed;
+    }
     void FixedUpdate()
     {
-        if (!isEsquive) 
+        if (!isEsquive)
         {
-            rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
-        }
-        else 
+
+            float currentSpeed = SpeedPlayer();
+            rb.MovePosition(rb.position + dir * currentSpeed * Time.fixedDeltaTime);        }
+        
+        else
         {
             canDash = false;
             StartCoroutine(Dash());
@@ -35,15 +71,20 @@ public class hero : MonoBehaviour
 
     void Update()
     {
-        dir.x = Input.GetAxisRaw("Horizontal");
-        dir.y = Input.GetAxisRaw("Vertical");
-        rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
-        if (Input.GetKeyDown(KeyCode.E) && canDash==true)
+        if (isEsquive)
+        {
+            return;
+        }
+        dir.x = Input.GetAxis("Horizontal");
+        dir.y = Input.GetAxis("Vertical");
+        if ((Input.GetKeyDown(KeyCode.E) || Input.GetKey(KeyCode.JoystickButton1)) && canDash && playerStamina.currentstamina >= dashCost)
         {
             isEsquive = true;
+            playerStamina.Usestamina(dashCost);
+            
         }
-        
         SetParam();
+        SpeedPlayer();
     }
 
     void SetParam ()
@@ -79,5 +120,8 @@ public class hero : MonoBehaviour
         yield return new WaitForSeconds(dashCoolDown);
         canDash = true;
     }
+
+
+
 }
 
