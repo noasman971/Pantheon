@@ -10,6 +10,7 @@ using UnityEngine.UIElements;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEditor;
 using Unity.VisualScripting;
+using System.Data.Common;
 
 public class GenerationDonjon : MonoBehaviour
 {
@@ -28,6 +29,10 @@ public class GenerationDonjon : MonoBehaviour
     public List<Vector2Int> endcorridors = new List<Vector2Int>();
 
     public HashSet<Vector2Int> roomwalker = new HashSet<Vector2Int>();
+
+    // public Dictionary<Vector2Int, HashSet<Vector2Int>> roomsdictionnary = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
+
+    // public Dictionary<string, Dictionary<string, string>> roomsorder = new Dictionary<string, Dictionary<string, string>>();
 
     // direction
     public List<Vector2Int> alldirection = new List<Vector2Int>{
@@ -64,7 +69,7 @@ public class GenerationDonjon : MonoBehaviour
 
     // affichage
     public Tilemap sol, mur;
-    public TileBase tile_sol, tile_mur, tile_test;
+    public TileBase tile_sol, tile_mur, tile_test, tile_test2;
 
     // bool activation fonctionnalite
     public bool StartRandomEachIteration;
@@ -74,7 +79,11 @@ public class GenerationDonjon : MonoBehaviour
     public bool DeleteSoloCasesActivate;
 
     public bool SoloRoomsActivate;
-    public  HashSet<Vector2Int> RandomWalker(Vector2Int start_position, int distance_walk)
+
+    public bool ActivateCorridors;
+
+    public bool ActivateStartRooms;
+    public HashSet<Vector2Int> RandomWalker(Vector2Int start_position, int distance_walk)
     {
         walker.Add(start_position);
         var new_position = start_position;
@@ -149,6 +158,7 @@ public class GenerationDonjon : MonoBehaviour
         {
             SoloRooms();
         }
+        // roomsdictionnary.Add(start_position,roomwalker);
         allwalker.UnionWith(roomwalker);
         roomwalker.Clear();
         return allwalker;
@@ -333,6 +343,11 @@ public class GenerationDonjon : MonoBehaviour
         }
     }
 
+    public void RoomsOrders()
+    {
+
+    }
+
     public void GenerateMap()
     {
         // Clear the tilemaps
@@ -393,7 +408,23 @@ public class GenerationDonjon : MonoBehaviour
         foreach(Vector2Int pos in allcorridors)
         {
             var tileposition_sol = sol.WorldToCell((Vector3Int)pos);
-            sol.SetTile(tileposition_sol, tile_sol);
+            if(ActivateCorridors) 
+            { 
+                sol.SetTile(tileposition_sol, tile_test);
+            }
+            else 
+            {
+                sol.SetTile(tileposition_sol, tile_sol);
+            }
+            
+        }
+        if(ActivateStartRooms)
+        {
+            foreach (Vector2Int pos in positionroom)
+            {
+                var tileposition_sol = sol.WorldToCell((Vector3Int)pos);
+                sol.SetTile(tileposition_sol, tile_test2);
+            }
         }
     }
     
