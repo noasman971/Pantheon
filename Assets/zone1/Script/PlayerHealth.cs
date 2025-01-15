@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 // classe de la vie du joueur
 public class PlayerHealth : MonoBehaviour
 {
@@ -20,7 +20,11 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(10f);
         }
-        
+
+        if (currenthealth <= 0)
+        {
+            SceneManager.LoadScene("Badis");
+        }
     }
 
     void TakeDamage(float damage)
