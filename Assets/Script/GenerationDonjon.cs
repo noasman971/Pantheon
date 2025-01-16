@@ -1,16 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.Tilemaps;
-using System.Linq.Expressions;
-using NUnit.Framework;
-using System;
-using UnityEngine.UIElements;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEditor;
-using Unity.VisualScripting;
-using System.Data.Common;
 
 public class GenerationDonjon : MonoBehaviour
 {
@@ -332,9 +324,9 @@ public class GenerationDonjon : MonoBehaviour
                 }   
             }
             if (count==4)
-                {
-                    newallneightborcase.Add(pos);
-                }
+            {
+                newallneightborcase.Add(pos);
+            }
         }
         foreach (Vector2Int pos in newallneightborcase)
         {
