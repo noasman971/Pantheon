@@ -4,12 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class buttoncontroller : MonoBehaviour
 {
-
+    public GameObject newGameButton;
+    public GameObject loadButton;
 
     void Start()
     {
-        GameObject.Find("NEWGAME BUTTON").SetActive(false);
-        GameObject.Find("LOAD BUTTON").SetActive(false);
+        newGameButton.SetActive(false);
+        loadButton.SetActive(false);
 
 
     }
@@ -30,7 +31,8 @@ public class buttoncontroller : MonoBehaviour
         GameObject.Find("PLAY BUTTON").SetActive(false);
         GameObject.Find("SETTINGS BTN").SetActive(false);
         GameObject.Find("EXIT BTN").SetActive(false);
-        
+        newGameButton.SetActive(true);
+        loadButton.SetActive(true);
 
 
         

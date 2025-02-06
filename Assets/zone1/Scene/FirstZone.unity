@@ -85074,7 +85074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   regenStamina: 0.5
-  maxstamina: 200
+  maxstamina: 1000
   currentstamina: 0
   staminaBar: {fileID: 1185357939}
   paused: 0

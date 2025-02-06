@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-// classe de la vie du joueur
 public class PlayerHealth : MonoBehaviour
 {
     public int maxhealth = 100;
@@ -16,10 +15,6 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            TakeDamage(10f);
-        }
 
         if (currenthealth <= 0)
         {
@@ -27,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     
     {
         if(currenthealth >= 0)
