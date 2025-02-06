@@ -1,9 +1,18 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class buttoncontroller : MonoBehaviour
 {
 
+
+    void Start()
+    {
+        GameObject.Find("NEWGAME BUTTON").SetActive(false);
+        GameObject.Find("LOAD BUTTON").SetActive(false);
+
+
+    }
 
     public void SettingsButton() {
         SceneManager.LoadScene("settings");
@@ -15,7 +24,20 @@ public class buttoncontroller : MonoBehaviour
         Application.Quit();
     }
 
-    public void StartButton()
+    public void PlayButton()
+    {
+        Debug.Log("Play Game");
+        GameObject.Find("PLAY BUTTON").SetActive(false);
+        GameObject.Find("SETTINGS BTN").SetActive(false);
+        GameObject.Find("EXIT BTN").SetActive(false);
+        
+
+
+        
+        
+    }
+
+    public void NewGame()
     {
         SceneManager.LoadScene("FirstZone");
         Debug.Log("Start Game");

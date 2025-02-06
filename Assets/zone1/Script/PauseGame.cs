@@ -18,7 +18,7 @@ public class PauseGame:MonoBehaviour {
         
     
     }
-
+ 
     public void Resume()
     {
         pause = false;
