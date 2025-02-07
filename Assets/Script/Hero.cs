@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class hero : MonoBehaviour
+public class Hero : MonoBehaviour
 {
     
     Rigidbody2D rb;
@@ -12,6 +12,9 @@ public class hero : MonoBehaviour
     public float speed_esquive = 15f;
     public float runCost = 2f;
     private float currentSpeed;
+    public GameObject firstspell;
+    public bool isAttacking = false;
+    
     
     Vector2 dir;
     Animator anim;
@@ -75,8 +78,20 @@ public class hero : MonoBehaviour
         {
             return;
         }
-        dir.x = Input.GetAxis("Horizontal");
-        dir.y = Input.GetAxis("Vertical");
+
+        if (!isAttacking)
+        {
+            dir.x = Input.GetAxis("Horizontal");
+            dir.y = Input.GetAxis("Vertical");
+        }
+        else
+        {
+            dir.x = 0;
+            dir.y = 0;
+        }
+        Spell1();
+        
+
         if ((Input.GetKeyDown(KeyCode.E) || Input.GetKey(KeyCode.JoystickButton1)) && canDash && playerStamina.currentstamina >= dashCost)
         {
             isEsquive = true;
@@ -119,6 +134,15 @@ public class hero : MonoBehaviour
         isEsquive = false;
         yield return new WaitForSeconds(dashCoolDown);
         canDash = true;
+    }
+
+    private void Spell1()
+    {
+        if(Input.GetKeyDown(KeyCode.Y)){
+            isAttacking = true;
+            Debug.Log("touche appuyé");
+            Instantiate( firstspell, transform.position, transform.rotation);
+        }
     }
 
 

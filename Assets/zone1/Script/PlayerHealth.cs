@@ -8,18 +8,23 @@ public class PlayerHealth : MonoBehaviour
     public Healthbar healthbar;
     void Start()
     {
-        currenthealth = maxhealth;
-        healthbar.SetMaxHealth(maxhealth);
-        
+        currenthealth = PlayerPrefs.GetFloat("currenthealth", maxhealth);
+        healthbar.SetHealth(currenthealth);
+  
     }
 
     void Update()
-    {
+    {   
+        PlayerPrefs.SetFloat("currenthealth", currenthealth);
+        PlayerPrefs.Save(); 
 
         if (currenthealth <= 0)
         {
+            PlayerPrefs.SetFloat("currenthealth", maxhealth);
+            PlayerPrefs.Save();
             SceneManager.LoadScene("Badis");
         }
+        regenHealth();
     }
 
     public void TakeDamage(float damage)
@@ -33,5 +38,24 @@ public class PlayerHealth : MonoBehaviour
         }
   
         
+    }
+
+    public void regenHealth()
+    {
+        if (currenthealth <= maxhealth)
+        {
+            
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                currenthealth += 10;
+                healthbar.SetHealth(currenthealth);
+
+
+            }
+        }
+        else if(currenthealth>maxhealth)
+        {
+            currenthealth = maxhealth;
+        }
     }
 }

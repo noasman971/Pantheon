@@ -10780,6 +10780,8 @@ MonoBehaviour:
   speed: 3
   speed_esquive: 15
   runCost: 2
+  firstspell: {fileID: 783504190126968931, guid: 65955001b9f654ff9ad9f1cb81543c5b,
+    type: 3}
   isEsquive: 0
   canDash: 1
   dashDuration: 0.2

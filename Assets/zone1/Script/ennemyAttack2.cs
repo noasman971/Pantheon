@@ -9,6 +9,7 @@ public class EnemyAttack2 : MonoBehaviour
     private Transform target;
     public static float speed = 2.5f;
     public static float attackRange = 1.5f;
+    public static float damageAttackRange = 2f;
     public static float verticalThreshold = 1f;
     public static float attackCooldown = 2f;
     public float health = 100f;
@@ -88,12 +89,27 @@ public class EnemyAttack2 : MonoBehaviour
         anim.Play("Attack");
         lastAttackTime = Time.time;
         
-        // Inflige les dégâts
-        PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
-        playerHealth.TakeDamage(15f);
-        
-        // On peut utiliser un AnimationEvent dans l'animation d'attaque pour appeler cette méthode
+   
         Invoke("EndAttack", 1f); // Ajustez le délai selon la durée de votre animation
+    }
+
+    public void HitPlayer()
+    {
+        float horizontalDistanceToPlayer = Mathf.Abs(transform.position.x - target.position.x);
+        float verticalDistanceToPlayer = Mathf.Abs(transform.position.y - target.position.y);
+        
+        if (horizontalDistanceToPlayer <= damageAttackRange &&
+            verticalDistanceToPlayer <= verticalThreshold)
+        {
+            PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
+            playerHealth.TakeDamage(15f);
+
+        }
+        else
+        {
+            return;
+        }
+
     }
     
     private void EndAttack()
@@ -103,7 +119,6 @@ public class EnemyAttack2 : MonoBehaviour
 
     public void EndDeathAnimation()
     {
-        //reallyDead = true;
         anim.speed = 0;
         SceneManager.LoadScene("FirstZone");
 

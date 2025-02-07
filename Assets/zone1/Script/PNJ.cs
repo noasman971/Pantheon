@@ -12,8 +12,14 @@ public class PNJ : MonoBehaviour
     int index;
     private bool isOndial, canDial;
     
+    
     // Utilisation correcte du Manager
     HUDManager Manager => HUDManager.instance;
+
+    public void Start()
+    {
+        Manager.DialogueHolder.SetActive(false);
+    }
 
     private void Update()
     {
@@ -28,6 +34,7 @@ public class PNJ : MonoBehaviour
     public void StartDialogue()
     {
         // Afficher le dialogue
+
         Manager.DialogueHolder.SetActive(true);
         isOndial = true;
         TypingText(sentences);

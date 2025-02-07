@@ -23,7 +23,7 @@ public class PauseGame:MonoBehaviour {
     {
         pause = false;
         playerstamina.paused = pause;
-        GameObject.Find("hero_7").GetComponent<hero>().enabled = true;
+        GameObject.Find("hero_7").GetComponent<Hero>().enabled = true;
         Time.timeScale = 1;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -38,7 +38,7 @@ public class PauseGame:MonoBehaviour {
 
     public void MainMenu()
     {
-        GameObject.Find("hero_7").GetComponent<hero>().enabled = true;
+        GameObject.Find("hero_7").GetComponent<Hero>().enabled = true;
         Time.timeScale = 1;
         Cursor.visible = true;
         SceneManager.LoadScene("Badis");
@@ -55,7 +55,7 @@ public class PauseGame:MonoBehaviour {
 
 
             if (pause)
-            {  GameObject.Find("hero_7").GetComponent<hero>().enabled = false;
+            {  GameObject.Find("hero_7").GetComponent<Hero>().enabled = false;
                 GameObject.Find("pauseMenu").GetComponent<Canvas>().enabled = true;
                 
                 Time.timeScale = 0;
