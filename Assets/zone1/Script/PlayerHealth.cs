@@ -2,60 +2,43 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxhealth = 100;
-    public float currenthealth;
-    
+
+    public PlayerStats playerStats;
     public Healthbar healthbar;
     void Start()
     {
-        currenthealth = PlayerPrefs.GetFloat("currenthealth", maxhealth);
-        healthbar.SetHealth(currenthealth);
+        playerStats.currenthealth = PlayerPrefs.GetFloat("currenthealth", playerStats.maxhealth);
+        healthbar.SetMaxHealth(playerStats.maxhealth);
+        healthbar.SetHealth(playerStats.currenthealth);
+        
   
     }
 
     void Update()
     {   
-        PlayerPrefs.SetFloat("currenthealth", currenthealth);
+        PlayerPrefs.SetFloat("currenthealth", playerStats.currenthealth);
         PlayerPrefs.Save(); 
 
-        if (currenthealth <= 0)
+        if (playerStats.currenthealth <= 0)
         {
-            PlayerPrefs.SetFloat("currenthealth", maxhealth);
+            PlayerPrefs.SetFloat("currenthealth", playerStats.maxhealth);
             PlayerPrefs.Save();
             SceneManager.LoadScene("Badis");
         }
-        regenHealth();
     }
 
     public void TakeDamage(float damage)
     
     {
-        if(currenthealth >= 0)
+        if(playerStats.currenthealth >= 0)
         {
-            currenthealth -= damage;
-            healthbar.SetHealth(currenthealth);
+            playerStats.currenthealth -= damage;
+            healthbar.SetHealth(playerStats.currenthealth);
             
         }
   
         
     }
 
-    public void regenHealth()
-    {
-        if (currenthealth <= maxhealth)
-        {
-            
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                currenthealth += 10;
-                healthbar.SetHealth(currenthealth);
 
-
-            }
-        }
-        else if(currenthealth>maxhealth)
-        {
-            currenthealth = maxhealth;
-        }
-    }
 }

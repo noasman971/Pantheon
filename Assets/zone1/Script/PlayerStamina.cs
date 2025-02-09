@@ -1,30 +1,23 @@
 using System.Net;
 using UnityEngine;
 
-// classe de la stamina du joueur
 public class PlayerStamina : MonoBehaviour
 {
-    public float regenStamina = 0.5f;
-    public int maxstamina = 200;
-    public float currentstamina;
-    
-    public StaminaBar staminaBar;
 
+    public StaminaBar staminaBar;
+    public PlayerStats playerStats;
     public bool paused;
     
     void Start()
     {
-        currentstamina = maxstamina;
-        staminaBar.SetMaxStamina(maxstamina);
+        playerStats.currentstamina =playerStats. maxstamina;
+        staminaBar.SetMaxStamina(playerStats.maxstamina);
         
     }
     
-    // régénère la stamina  toutes les frames
     void Update()
     {
-        
-        RegenStamina(regenStamina);
-
+        RegenStamina(playerStats.regenStamina);
         
     }
     
@@ -32,10 +25,10 @@ public class PlayerStamina : MonoBehaviour
     public void Usestamina(float stamina)
     
     {
-        if(currentstamina >= 0)
+        if(playerStats.currentstamina >= 0)
         {
-            currentstamina -= stamina;
-            staminaBar.SetStamina(currentstamina);
+            playerStats.currentstamina -= stamina;
+            staminaBar.SetStamina(playerStats.currentstamina);
             
         }
   
@@ -51,16 +44,16 @@ public class PlayerStamina : MonoBehaviour
         }
         else
         {
-            if(currentstamina <= maxstamina)
+            if(playerStats.currentstamina <= playerStats.maxstamina)
             {
-                currentstamina += regenStamina;
-                staminaBar.SetStamina(currentstamina);
+                playerStats.currentstamina += regenStamina;
+                staminaBar.SetStamina(playerStats.currentstamina);
             
             }
 
-            if (currentstamina > maxstamina)
+            if (playerStats.currentstamina > playerStats.maxstamina)
             {
-                currentstamina = maxstamina;
+                playerStats.currentstamina = playerStats.maxstamina;
             }
             
         }

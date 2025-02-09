@@ -9,7 +9,7 @@ public class DetectKataBorea : MonoBehaviour
     {
         jauge+=1;
         print(jauge);
-        if (jauge >= 100)
+        if (jauge >= 100 && other.gameObject.tag == "grass")
         {
             print("changez de scène");
             jauge = 0;

@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 8246100866806555801}
   - component: {fileID: 5875469441020231678}
   - component: {fileID: 8902836687875715056}
+  - component: {fileID: 2419573344603983187}
   m_Layer: 6
   m_Name: BlackWolf
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a30dc22f9594993b16b224d0f15313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  stats: {fileID: 2419573344603983187}
 --- !u!1839735485 &5875469441020231678
 Tilemap:
   m_ObjectHideFlags: 0
@@ -263,3 +264,16 @@ PolygonCollider2D:
       - {x: 0.17999999, y: -0.08406145}
       - {x: 0.1538268, y: -0.055568427}
   m_UseDelaunayMesh: 0
+--- !u!114 &2419573344603983187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3999742023043844266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508d69daba056724ea7051c642fe3cc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
