@@ -14,18 +14,24 @@ public class Hitbox : MonoBehaviour
 
 
     }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
 
         if (collision.gameObject.tag == "Ennemy")
         {
             Stats stats = collision.gameObject.GetComponent<Stats>();
+            EnemyAttack2 enemyAttack2 = collision.gameObject.GetComponent<EnemyAttack2>();
+            enemyAttack2.gethit = true;
             stats.health -= 30;
 
-            Debug.Log(stats.health);
-            
-        }
 
+            Debug.Log(stats.health);
+
+        }
     }
-  
+
+
+    
+
 }

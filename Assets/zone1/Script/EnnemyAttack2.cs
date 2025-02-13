@@ -9,6 +9,7 @@ public class EnemyAttack2 : MonoBehaviour
     private Animator anim;
     private Transform target;
     public Stats stats;
+    public bool gethit = false;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -47,6 +48,11 @@ public class EnemyAttack2 : MonoBehaviour
             {
                 Attack();
             }
+
+            if (gethit)
+            {
+                anim.Play("hit");
+            }
             else
             {   
                 anim.Play("Run");
@@ -54,7 +60,6 @@ public class EnemyAttack2 : MonoBehaviour
             }
             Vector2 direction = (target.position - transform.position).normalized;
             GetComponent<SpriteRenderer>().flipX = direction.x > 0;
-
         }
         
         if (stats.isDead)
@@ -71,21 +76,19 @@ public class EnemyAttack2 : MonoBehaviour
             {
                 if (Randoms())
                 {
-                    Debug.Log("ouiiiiiiiiiiiii");
+                    Debug.Log("true capture");
                 }
                 else
                 {
-                    Debug.Log("aaaaaaa");
+                    Debug.Log("false capture");
                 }
             }
-
         }
-
-        
-       
-        
-
     }
+    
+    
+    
+    
 
     private bool Randoms()
     {
@@ -120,6 +123,15 @@ public class EnemyAttack2 : MonoBehaviour
         }
 
     }
+
+    private void GetHit()
+    {
+        
+        anim.Play("Hit");
+        gethit = false;
+
+        
+    }
     
     private void EndAttack()
     {
@@ -136,6 +148,11 @@ public class EnemyAttack2 : MonoBehaviour
     public void TimetoCapture()
     {
         anim.speed = 0;
+    }
+
+    public void EndGetHitAnimation()
+    {
+        gethit = false;
     }
 
     

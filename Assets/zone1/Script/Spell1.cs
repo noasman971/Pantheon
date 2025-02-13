@@ -10,6 +10,7 @@ public class Spell1 : MonoBehaviour
     void Start()
     {
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        // si l'animation est flip en x alors play l'animation reverse
     }
 
     void EndAnimation()
