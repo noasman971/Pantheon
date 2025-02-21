@@ -1,42 +1,44 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-// classe de la vie du joueur
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxhealth = 100;
-    public float currenthealth;
-    
+
+    public PlayerStats playerStats;
     public Healthbar healthbar;
     void Start()
     {
-        currenthealth = maxhealth;
-        healthbar.SetMaxHealth(maxhealth);
+        playerStats.currenthealth = PlayerPrefs.GetFloat("currenthealth", playerStats.maxhealth);
+        healthbar.SetMaxHealth(playerStats.maxhealth);
+        healthbar.SetHealth(playerStats.currenthealth);
         
+  
     }
 
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            TakeDamage(10f);
-        }
+    {   
+        PlayerPrefs.SetFloat("currenthealth", playerStats.currenthealth);
+        PlayerPrefs.Save(); 
 
-        if (currenthealth <= 0)
+        if (playerStats.currenthealth <= 0)
         {
+            PlayerPrefs.SetFloat("currenthealth", playerStats.maxhealth);
+            PlayerPrefs.Save();
             SceneManager.LoadScene("Badis");
         }
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     
     {
-        if(currenthealth >= 0)
+        if(playerStats.currenthealth >= 0)
         {
-            currenthealth -= damage;
-            healthbar.SetHealth(currenthealth);
+            playerStats.currenthealth -= damage;
+            healthbar.SetHealth(playerStats.currenthealth);
             
         }
   
         
     }
+
+
 }
