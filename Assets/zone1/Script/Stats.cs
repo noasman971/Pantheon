@@ -15,5 +15,10 @@ public class Stats : MonoBehaviour
     public bool isAttacking = false;
     public float lastAttackTime = 0f;
 
-
+    public float damage_atk1;
+    public float damage_atk2;
+    public float damage_special;
+    
+    public bool gethit = false;
+    public int dropRate = 5;
 }
