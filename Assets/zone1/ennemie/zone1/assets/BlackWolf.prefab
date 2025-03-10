@@ -129,6 +129,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 2419573344603983187}
   gethit: 0
+  listKatara: {fileID: 0}
+  listAttaque: {fileID: 0}
+  attackDrop: {fileID: 783504190126968931, guid: 65955001b9f654ff9ad9f1cb81543c5b,
+    type: 3}
 --- !u!114 &2419573344603983187
 MonoBehaviour:
   m_ObjectHideFlags: 0

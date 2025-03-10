@@ -155,6 +155,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 4134876037392097746}
+  gethit: 0
+  listKatara: {fileID: 0}
+  listAttaque: {fileID: 0}
+  attackDrop: {fileID: 783504190126968931, guid: 65955001b9f654ff9ad9f1cb81543c5b,
+    type: 3}
 --- !u!60 &5272729300327699893
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -241,3 +246,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  speed: 3
+  attackRange: 1.5
+  damageAttackRange: 2
+  verticalThreshold: 1
+  attackCooldown: 2
+  isDead: 0
+  isAttacking: 0
+  lastAttackTime: 0

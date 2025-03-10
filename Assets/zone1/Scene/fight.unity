@@ -1662,7 +1662,7 @@ MonoBehaviour:
   - {fileID: 756195784}
   - {fileID: 127505585}
   ennemyPrefabs:
-  - {fileID: 3999742023043844266, guid: 4dffc1414bb8d4cfb81c1f4cfd9306ce, type: 3}
+  - {fileID: 4532102732022222252, guid: 8058456cc216b8e44833f717ecb0061e, type: 3}
 --- !u!4 &504763141
 Transform:
   m_ObjectHideFlags: 0
@@ -10566,6 +10566,9 @@ GameObject:
   - component: {fileID: 1515538026}
   - component: {fileID: 1515538025}
   - component: {fileID: 1515538035}
+  - component: {fileID: 1515538036}
+  - component: {fileID: 1515538037}
+  - component: {fileID: 1515538038}
   m_Layer: 6
   m_Name: hero_7
   m_TagString: Player
@@ -10738,10 +10741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e806eb033e8b34ab75b63ccc7dbf0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstspell: {fileID: 783504190126968931, guid: 65955001b9f654ff9ad9f1cb81543c5b,
-    type: 3}
-  secondspell: {fileID: 6089493955406277836, guid: 6b82df9f86387ae45a2e3392a0dbfcc7,
-    type: 3}
   playerStats: {fileID: 1515538035}
 --- !u!212 &1515538033
 SpriteRenderer:
@@ -10842,6 +10841,50 @@ MonoBehaviour:
   isAttacking: 0
   currentSpeed: 0
   moveBlock: 0
+--- !u!114 &1515538036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515538024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a14e14bf22fa78846a171f44619356fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  katara: []
+--- !u!114 &1515538037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515538024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4a855f09db6ba4c9ab2065836682e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllAttack:
+  - {fileID: 783504190126968931, guid: 65955001b9f654ff9ad9f1cb81543c5b, type: 3}
+  - {fileID: 6089493955406277836, guid: 6b82df9f86387ae45a2e3392a0dbfcc7, type: 3}
+  attack: []
+--- !u!114 &1515538038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515538024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008c03292d69faf48b4999d723241a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listAttaque: {fileID: 0}
+  playerStats: {fileID: 0}
+  myAttacks: []
 --- !u!1 &1537579201
 GameObject:
   m_ObjectHideFlags: 0

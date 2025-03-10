@@ -10,10 +10,17 @@ public class EnemyAttack2 : MonoBehaviour
     private Transform target;
     public Stats stats;
     public bool gethit = false;
+    public ListKatara listKatara;
+    public ListAttaque listAttaque;
+    public GameObject attackDrop;
+    
+    
     void Start()
     {
         anim = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        listKatara = target.GetComponent<ListKatara>();
+        listAttaque = target.GetComponent<ListAttaque>();
     }
     
     
@@ -23,10 +30,6 @@ public class EnemyAttack2 : MonoBehaviour
     {
         if (!stats.isDead)
         {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                stats.health-=20;
-            }
 
             if (stats.health <= 0)
             {
@@ -77,9 +80,22 @@ public class EnemyAttack2 : MonoBehaviour
                 if (Randoms())
                 {
                     Debug.Log("true capture");
+                    listKatara.AddKatara(gameObject.name);
+                    foreach (string attackname in listAttaque.attack)
+                    {
+                        if (attackDrop.name != attackname)
+                        {
+                            listAttaque.AddAttack(attackDrop.name);
+
+                        }
+                    }
+                    Destroy(gameObject);
+                    SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
                 }
                 else
                 {
+                    //anim.speed = 1;
+
                     Debug.Log("false capture");
                 }
             }
@@ -93,7 +109,7 @@ public class EnemyAttack2 : MonoBehaviour
     private bool Randoms()
     {
         Random rnd = new Random();
-        int random = rnd.Next(1, 3);
+        int random = rnd.Next(1, stats.dropRate);
         return random == 1;
     }
     
@@ -124,14 +140,7 @@ public class EnemyAttack2 : MonoBehaviour
 
     }
 
-    private void GetHit()
-    {
-        
-        anim.Play("Hit");
-        gethit = false;
 
-        
-    }
     
     private void EndAttack()
     {
@@ -141,7 +150,7 @@ public class EnemyAttack2 : MonoBehaviour
     public void EndDeathAnimation()
     {
         anim.speed = 0;
-        SceneManager.LoadScene("FirstZone");
+        SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
 
     }
 
