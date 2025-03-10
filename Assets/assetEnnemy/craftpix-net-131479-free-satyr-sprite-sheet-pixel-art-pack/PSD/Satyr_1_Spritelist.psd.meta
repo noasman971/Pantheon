@@ -1497,7 +1497,62 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Satyr_1_Spritelist_0: 9105754417477109125
+      Satyr_1_Spritelist_1: -8116936914399309206
+      Satyr_1_Spritelist_10: -441266120871325999
+      Satyr_1_Spritelist_11: 1831327412509516306
+      Satyr_1_Spritelist_12: 5621310672295326449
+      Satyr_1_Spritelist_13: -3762615513370742650
+      Satyr_1_Spritelist_14: -8760500259047779506
+      Satyr_1_Spritelist_15: -4538083041560547628
+      Satyr_1_Spritelist_16: -8151320983860865761
+      Satyr_1_Spritelist_17: -4532137613701275861
+      Satyr_1_Spritelist_18: -7293356468047761720
+      Satyr_1_Spritelist_19: -2588191688007240360
+      Satyr_1_Spritelist_2: 8363316737048697808
+      Satyr_1_Spritelist_20: -5479204011294740659
+      Satyr_1_Spritelist_21: 3438474090184573667
+      Satyr_1_Spritelist_22: 8990579539406324841
+      Satyr_1_Spritelist_23: 7057738429835589934
+      Satyr_1_Spritelist_24: 1223584768423423153
+      Satyr_1_Spritelist_25: -2115980948682521320
+      Satyr_1_Spritelist_26: -4629508328251007574
+      Satyr_1_Spritelist_27: 4292420156466926416
+      Satyr_1_Spritelist_28: 7233109514257683814
+      Satyr_1_Spritelist_29: -5777424000250368752
+      Satyr_1_Spritelist_3: 8556168141881098900
+      Satyr_1_Spritelist_30: -1365090741054371321
+      Satyr_1_Spritelist_31: 460288944540898587
+      Satyr_1_Spritelist_32: -9180648321639817138
+      Satyr_1_Spritelist_33: -8672137945276957695
+      Satyr_1_Spritelist_34: 240297162962960889
+      Satyr_1_Spritelist_35: -8520817210536301043
+      Satyr_1_Spritelist_36: -3194144767483419933
+      Satyr_1_Spritelist_37: -8279869957525528575
+      Satyr_1_Spritelist_38: -2803354073451289754
+      Satyr_1_Spritelist_39: -7297962918414271231
+      Satyr_1_Spritelist_4: 7425746644875564737
+      Satyr_1_Spritelist_40: 3772091416102842973
+      Satyr_1_Spritelist_41: 3679618183091249640
+      Satyr_1_Spritelist_42: 9179437564024123897
+      Satyr_1_Spritelist_43: -8604886737831007434
+      Satyr_1_Spritelist_44: -2318807140809185863
+      Satyr_1_Spritelist_45: -2539087791078324586
+      Satyr_1_Spritelist_46: 5907440309949698697
+      Satyr_1_Spritelist_47: 6643678853501662364
+      Satyr_1_Spritelist_48: 2499853532778151128
+      Satyr_1_Spritelist_49: 5765850359524710964
+      Satyr_1_Spritelist_5: -3968307007450762855
+      Satyr_1_Spritelist_50: 4269713801480648129
+      Satyr_1_Spritelist_51: 720137930400666624
+      Satyr_1_Spritelist_52: 2065626181867884492
+      Satyr_1_Spritelist_53: 7701990077382285986
+      Satyr_1_Spritelist_54: 4795930273964850718
+      Satyr_1_Spritelist_6: -5400024824686053635
+      Satyr_1_Spritelist_7: -5399990627894687479
+      Satyr_1_Spritelist_8: -3911932789166085029
+      Satyr_1_Spritelist_9: 8990632874812134586
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
