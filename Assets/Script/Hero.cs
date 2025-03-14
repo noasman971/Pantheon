@@ -65,7 +65,7 @@ public class Hero : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            playerStats.currenthealth = 200;
+            playerStats.currenthealth = playerStats.maxhealth;
         }
         if (playerStats.isEsquive)
         {

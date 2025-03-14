@@ -81,14 +81,12 @@ public class EnemyAttack2 : MonoBehaviour
                 {
                     Debug.Log("true capture");
                     listKatara.AddKatara(gameObject.name);
-                    foreach (string attackname in listAttaque.attack)
+                    if (!listAttaque.attack.Contains(attackDrop.name))
                     {
-                        if (attackDrop.name != attackname)
-                        {
-                            listAttaque.AddAttack(attackDrop.name);
-
-                        }
+                        listAttaque.AddAttack(attackDrop.name);
+                        Debug.Log(gameObject.name + " Ajouté");
                     }
+                    
                     Destroy(gameObject);
                     SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
                 }
@@ -118,7 +116,7 @@ public class EnemyAttack2 : MonoBehaviour
         stats.isAttacking = true;
         anim.Play("Attack");
         stats.lastAttackTime = Time.time;
-        Invoke("EndAttack", 1f); // Ajustez le délai selon la durée de votre animation
+        Invoke("EndAttack", 1f);
     }
 
     public void HitPlayer()

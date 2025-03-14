@@ -14,6 +14,12 @@ public class EnemyBase : MonoBehaviour
         stats = GetComponent<Stats>();
     }
 
+    
+    
+    
+    
+    
+    
     protected bool Randoms()
     {
         System.Random rnd = new System.Random();
@@ -25,21 +31,12 @@ public class EnemyBase : MonoBehaviour
 
     protected void EndAttack()
     {
+        stats.atk1 = false;
+        stats.atk2 = false;
+        stats.special = false;
         stats.isAttacking = false;
     }
-
-    public void HitPlayer()
-    {
-        float horizontalDistanceToPlayer = Mathf.Abs(transform.position.x - target.position.x);
-        float verticalDistanceToPlayer = Mathf.Abs(transform.position.y - target.position.y);
-
-        if (horizontalDistanceToPlayer <= stats.damageAttackRange &&
-            verticalDistanceToPlayer <= stats.verticalThreshold)
-        {
-            PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
-            playerHealth.TakeDamage(15f);
-        }
-    }
+    
 
     public void EndDeathAnimation()
     {

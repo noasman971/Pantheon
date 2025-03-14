@@ -38,6 +38,8 @@ public class ListAttaque : MonoBehaviour
     {
         string json = JsonUtility.ToJson(new SaveData(attack));
         File.WriteAllText(filePath, json);
+        Debug.Log("Fichier enregistré : " + filePath);
+
     }
 
     private void LoadList()

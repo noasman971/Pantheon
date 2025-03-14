@@ -27,38 +27,36 @@ public class GorgonAttack : EnemyBase
             {
                 stats.isDead = true;
             }
-            float horizontalDistanceToPlayer = Mathf.Abs(transform.position.x - target.position.x);
-            float verticalDistanceToPlayer = Mathf.Abs(transform.position.y - target.position.y);
-
-            // Si on est en train d'attaquer, on attend la fin de l'animation
+            
             if (stats.isAttacking)
             {
                 return;
             }
         
-            // Vérifie si on peut attaquer
-            if (horizontalDistanceToPlayer <= stats.attackRange && 
-                verticalDistanceToPlayer <= stats.verticalThreshold && 
-                Time.time >= stats.lastAttackTime + stats.attackCooldown && !stats.isDead)
+            if (stats.canAttack && Time.time >= stats.lastAttackTime + stats.attackCooldown)
             {
                 Attack();
             }
-
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            Vector2 direction = (target.position - transform.position).normalized;
             if (stats.gethit)
             {
-                anim.Play("hit");
+                anim.Play("Hit");
             }
             else
             {   
                 anim.Play("Run");
-                transform.position = Vector2.MoveTowards(transform.position, target.position, stats.speed * Time.deltaTime);
+                
+
+                rb.linearVelocity = direction * stats.speed;
+                
             }
-            Vector2 direction = (target.position - transform.position).normalized;
             GetComponent<SpriteRenderer>().flipX = direction.x < 0;
         }
         
         if (stats.isDead)
         {
+
             anim.Play("Dead");
             if (anim.speed == 0 && Input.GetKeyDown(KeyCode.M))
             {
@@ -93,12 +91,46 @@ public class GorgonAttack : EnemyBase
             }
         }
     }
-    
+
+
+    public void endAttack()
+    {
+        stats.atk1 = false;
+        stats.atk2 = false;
+        stats.special = false;
+    }
     
     protected void Attack()
     {
+        
         stats.isAttacking = true;
-        anim.Play("Attack");
+        if (stats.health >= stats.maxHealth * (0.8))
+        {
+            stats.atk1 = true;
+            stats.atk2 = false;
+            stats.special = false;
+            anim.Play("Attack");
+        }
+        else if (stats.health >= stats.maxHealth * (0.4) && stats.canSpecial)
+        {
+            stats.atk1 = false;
+            stats.atk2 = false;
+            stats.special = true;
+            anim.Play("Special");
+            stats.canSpecial = false;
+
+
+        }
+        else
+        {
+
+            stats.atk1 = false;
+            stats.special = false;
+            stats.atk2 = true;
+            anim.Play("Attack2");
+
+
+        }
         stats.lastAttackTime = Time.time;
         Invoke("EndAttack", 1f);
     }
