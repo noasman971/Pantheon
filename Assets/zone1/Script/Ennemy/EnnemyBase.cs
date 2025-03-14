@@ -4,13 +4,11 @@ using UnityEngine.SceneManagement;
 public class EnemyBase : MonoBehaviour
 {
     protected Animator anim;
-    protected Transform target;
     [SerializeField] protected Stats stats;
 
     protected virtual void Awake()
     {
         anim = GetComponent<Animator>();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
         stats = GetComponent<Stats>();
     }
 
@@ -19,6 +17,39 @@ public class EnemyBase : MonoBehaviour
     
     
     
+    protected void Attack()
+    {
+        
+        stats.isAttacking = true;
+        if (stats.health >= stats.maxHealth * (0.8))
+        {
+            stats.atk1 = true;
+            stats.atk2 = false;
+            stats.special = false;
+            anim.Play("Attack");
+        }
+        else if (stats.health >= stats.maxHealth * (0.4) && stats.canSpecial)
+        {
+            stats.atk1 = false;
+            stats.atk2 = false;
+            stats.special = true;
+            anim.Play("Special");
+            stats.canSpecial = false;
+
+
+        }
+        else
+        {
+
+            stats.atk1 = false;
+            stats.special = false;
+            stats.atk2 = true;
+            anim.Play("Attack2");
+
+
+        }
+        stats.lastAttackTime = Time.time;
+    }
     
     protected bool Randoms()
     {
@@ -29,7 +60,7 @@ public class EnemyBase : MonoBehaviour
 
     
 
-    protected void EndAttack()
+    public void EndAttack()
     {
         stats.atk1 = false;
         stats.atk2 = false;

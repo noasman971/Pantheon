@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GorgonAttack : EnemyBase
+public class ThreeAttack : EnemyBase
 {
 
     public GameObject attackDrop;
@@ -91,49 +91,7 @@ public class GorgonAttack : EnemyBase
             }
         }
     }
-
-
-    public void endAttack()
-    {
-        stats.atk1 = false;
-        stats.atk2 = false;
-        stats.special = false;
-    }
-    
-    protected void Attack()
-    {
-        
-        stats.isAttacking = true;
-        if (stats.health >= stats.maxHealth * (0.8))
-        {
-            stats.atk1 = true;
-            stats.atk2 = false;
-            stats.special = false;
-            anim.Play("Attack");
-        }
-        else if (stats.health >= stats.maxHealth * (0.4) && stats.canSpecial)
-        {
-            stats.atk1 = false;
-            stats.atk2 = false;
-            stats.special = true;
-            anim.Play("Special");
-            stats.canSpecial = false;
-
-
-        }
-        else
-        {
-
-            stats.atk1 = false;
-            stats.special = false;
-            stats.atk2 = true;
-            anim.Play("Attack2");
-
-
-        }
-        stats.lastAttackTime = Time.time;
-        Invoke("EndAttack", 1f);
-    }
+       
 
     
 }

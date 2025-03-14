@@ -23,7 +23,7 @@ public class Hitbox : MonoBehaviour
             Stats stats = collision.gameObject.GetComponent<Stats>();
             //EnemyAttack2 enemyAttack2 = collision.gameObject.GetComponent<EnemyAttack2>();
             //enemyAttack2.gethit = true;
-            GorgonAttack gorgonAttack = collision.gameObject.GetComponent<GorgonAttack>();
+            ThreeAttack threeAttack = collision.gameObject.GetComponent<ThreeAttack>();
             Stats stats2 = collision.gameObject.GetComponent<Stats>();
             stats2.gethit = true;
             stats.health -= 30;

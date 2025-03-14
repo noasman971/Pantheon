@@ -17,6 +17,8 @@ public class EnnemyHitbox : MonoBehaviour
 
     }
     
+    // Faut que la boule de feu suit le joueur
+    
     
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -26,8 +28,7 @@ public class EnnemyHitbox : MonoBehaviour
             Debug.Log(gameObject.name);
             if (gameObject.name == "Capsule")
             {
-                
-                
+       
                 if (stats.atk1)
                 {
                     damage = stats.damage_atk1;
@@ -75,6 +76,14 @@ public class EnnemyHitbox : MonoBehaviour
             stats.canAttack = false;
 
         }
+    }
+    
+    
+    void FollowPlayer()
+    {
+        
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, 2 * Time.deltaTime);
+
     }
     
     
