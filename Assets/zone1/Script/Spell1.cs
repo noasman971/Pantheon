@@ -1,16 +1,23 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Spell1 : MonoBehaviour
+public class Spell1 : MonoBehaviour, Attackable
 {
     private Animator anim;
-    private PlayerStats playerStats;
     public float cost;
+    private Vector2 dir;
+    public GameObject target;
+    public PlayerStats playerStats;
 
+    void Awake()
+    {
+        target = GameObject.FindGameObjectWithTag("Player");
+        playerStats = target.GetComponent<PlayerStats>();
+    }
+    
     void Start()
     {
-        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-        // si l'animation est flip en x alors play l'animation reverse
+        anim = GetComponent<Animator>();
+
     }
 
     void EndAnimation()
@@ -20,7 +27,47 @@ public class Spell1 : MonoBehaviour
 
     }
 
+    void UseStamina(float cost)
+    {
+        if (playerStats != null)
+        {
+            playerStats.currentstamina -= cost;
 
+        }
+    }
+    
+
+
+    public void Attack(GameObject playerRef)
+    {
+        GameObject newSpell = Instantiate(this.gameObject, playerRef.transform.position, Quaternion.identity);
+        SpriteRenderer spell = newSpell.GetComponent<SpriteRenderer>();
+        UseStamina(cost);
+
+        Vector2 playerDirection;
+        playerDirection.x = Input.GetAxisRaw("Horizontal");
+        playerDirection.y = Input.GetAxisRaw("Vertical");
+    
+        if (playerDirection != Vector2.zero)
+        {
+            playerDirection.Normalize();
+        }
+    
+        if (Mathf.Abs(playerDirection.y) > Mathf.Abs(playerDirection.x))
+        {
+            if (playerDirection.y > 0)
+                spell.transform.Rotate(0, 0, 90);
+            else
+                spell.transform.Rotate(0, 0, -90);
+        }
+        else
+        {
+            if (playerDirection.x > 0)
+                spell.transform.Rotate(0, 0, 0);
+            else
+                spell.transform.Rotate(0, 0, 180);
+        }
+    }
 
   
 }

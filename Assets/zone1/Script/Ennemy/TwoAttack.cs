@@ -1,0 +1,126 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class TwoAttack: EnemyBase
+{
+    public GameObject attackDrop;
+    private Transform target;
+    public ListKatara listKatara;
+    public ListAttaque listAttaque;
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        listKatara = target.GetComponent<ListKatara>();
+        listAttaque = target.GetComponent<ListAttaque>();
+    }
+
+       void Update()
+    {
+        if (!stats.isDead)
+        {
+
+            if (stats.health <= 0)
+            {
+                stats.isDead = true;
+            }
+            
+            if (stats.isAttacking)
+            {
+                return;
+            }
+
+        
+            if (stats.canAttack && Time.time >= stats.lastAttackTime + stats.attackCooldown)
+            {
+                stats.isAttacking = false;
+                
+                Attack();
+            }
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            Vector2 direction = (target.position - transform.position).normalized;
+            if (stats.gethit)
+            {
+                stats.isAttacking = false;
+
+                anim.Play("Hit");
+            }
+            else
+            {   
+                anim.Play("Run");
+                
+
+                rb.linearVelocity = direction * stats.speed;
+                
+            }
+            GetComponent<SpriteRenderer>().flipX = direction.x < 0;
+        }
+        
+        if (stats.isDead)
+        {
+
+            anim.Play("Dead");
+            if (anim.speed == 0 && Input.GetKeyDown(KeyCode.M))
+            {
+                anim.speed = 1;
+                
+
+            }
+
+            if (anim.speed == 0 && Input.GetKeyDown(KeyCode.C))
+            {
+                if (Randoms())
+                {
+                    Debug.Log("true capture");
+                    listKatara.AddKatara(gameObject.name);
+                    foreach (string attackname in listAttaque.attack)
+                    {
+                        if (attackDrop.name != attackname)
+                        {
+                            listAttaque.AddAttack(attackDrop.name);
+
+                        }
+                    }
+                    Destroy(gameObject);
+                    SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
+                }
+                else
+                {
+                    //anim.speed = 1;
+
+                    Debug.Log("false capture");
+                }
+            }
+        }
+    }
+       
+    protected new void Attack()
+    {
+        
+        stats.isAttacking = true;
+        if (stats.health >= stats.maxHealth * (0.8))
+        {
+            stats.atk1 = true;
+            stats.atk2 = false;
+            anim.Play("Attack");
+        }
+        else
+        {
+
+            stats.atk1 = false;
+            stats.atk2 = true;
+            anim.Play("Attack2");
+            
+
+
+        }
+        stats.lastAttackTime = Time.time;
+    }
+
+   
+    
+    
+       
+
+}

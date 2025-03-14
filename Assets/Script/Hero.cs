@@ -7,12 +7,9 @@ public class Hero : MonoBehaviour
 {
     
     Rigidbody2D rb;
-    public GameObject firstspell;
-    public GameObject secondspell;
     public PlayerStats playerStats;
     Vector2 dir;
     Animator anim;
-    Spell1 spellScript;
     
 
     private PlayerStamina playerStamina;
@@ -20,7 +17,6 @@ public class Hero : MonoBehaviour
     
     void Start()
     {
-        spellScript = firstspell.GetComponent<Spell1>();
         playerStats.canDash = true;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -67,6 +63,10 @@ public class Hero : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            playerStats.currenthealth = playerStats.maxhealth;
+        }
         if (playerStats.isEsquive)
         {
             return;
@@ -89,12 +89,7 @@ public class Hero : MonoBehaviour
             return;
         }
 
-        if (playerStats.currentstamina >= spellScript.cost)
-        {
-            Spell1();
-            Spell2();
-
-        }
+    
         
 
         if ((Input.GetKeyDown(KeyCode.E) || Input.GetKey(KeyCode.JoystickButton1)) && playerStats.canDash && playerStats.currentstamina >= playerStats.dashCost)
@@ -141,38 +136,7 @@ public class Hero : MonoBehaviour
         playerStats.canDash = true;
     }
 
-    private void Spell1()
-    {
-        if(Input.GetKeyDown(KeyCode.Y)){
-            playerStats.isAttacking = true;
-            GameObject newSpell = Instantiate(firstspell, transform.position, transform.rotation);
-            SpriteRenderer spell = newSpell.GetComponent<SpriteRenderer>();
-            
-            spell.flipX = dir.x < 0;
-            if (dir.y < 0)
-            {
-                spell.transform.Rotate(0, 0, -90);
-            }
 
-            if (dir.y>0)
-            {
-                spell.transform.Rotate(0, 0, 90);
-
-            }
-        }
-    }
-
-    private void Spell2()
-    {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            playerStats.isAttacking = true;
-            GameObject newSpell = Instantiate(secondspell, transform.position, transform.rotation);
-            Spell2 spell = newSpell.GetComponent<Spell2>();
-            spell.regenHealth();
-            
-        }
-    }
 
 
 

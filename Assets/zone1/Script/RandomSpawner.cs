@@ -14,8 +14,9 @@ public class RandomSpawner : MonoBehaviour
             int randEnemy = Random.Range(0, ennemyPrefabs.Length);
             int randSpawnPoint = Random.Range(0, spawnPoints.Length);
             
-            Instantiate(ennemyPrefabs[randEnemy], spawnPoints[randSpawnPoint].position, transform.rotation);
-            compteur++;
+             GameObject newObject = Instantiate(ennemyPrefabs[randEnemy], spawnPoints[randSpawnPoint].position, transform.rotation);
+             newObject.name = ennemyPrefabs[randEnemy].name; 
+            compteur = 1;
         }
     }
 }

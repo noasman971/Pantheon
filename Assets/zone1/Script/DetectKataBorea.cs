@@ -7,8 +7,12 @@ public class DetectKataBorea : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        jauge+=1;
-        print(jauge);
+        if (other.gameObject.tag == "grass")
+        {
+            jauge+=1;
+            print(jauge);
+        }
+      
         if (jauge >= 100 && other.gameObject.tag == "grass")
         {
             print("changez de scène");

@@ -7,6 +7,7 @@ TagManager:
   - Attack
   - Ennemy
   - grass
+  - Special
   layers:
   - Default
   - TransparentFX

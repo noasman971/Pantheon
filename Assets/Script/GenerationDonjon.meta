@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Script/GenerationDonjon.meta
+guid: d44a3ffbeae2d52489a4f7ff0439f42c
+folderAsset: yes
+DefaultImporter:
+========
+guid: 1d7bb883d1dff4e8ba80bb7fb0435814
+NativeFormatImporter:
+>>>>>>>> e0406b7 (add:  Attack1, Attack2, and Special + improved attack range detection to Gorgon):Assets/zone1/ennemie/zone1/animation/Gorgon/Dead.anim.meta
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
