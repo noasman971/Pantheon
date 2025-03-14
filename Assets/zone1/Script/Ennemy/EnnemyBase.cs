@@ -60,12 +60,13 @@ public class EnemyBase : MonoBehaviour
 
     
 
-    public void EndAttack()
+    protected void EndAttack()
     {
+        stats.isAttacking = false;
         stats.atk1 = false;
         stats.atk2 = false;
         stats.special = false;
-        stats.isAttacking = false;
+        
     }
     
 

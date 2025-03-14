@@ -6,7 +6,7 @@ using Random = System.Random;
 
 public class EnemyAttack2 : EnemyBase
 {
-    private Animator anim;
+    //private Animator anim;
     private Transform target;
     public bool gethit = false;
     public ListKatara listKatara;

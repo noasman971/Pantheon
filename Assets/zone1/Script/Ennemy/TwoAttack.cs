@@ -5,7 +5,6 @@ public class TwoAttack: EnemyBase
 {
     public GameObject attackDrop;
     private Transform target;
-    private Animator anim;
     public ListKatara listKatara;
     public ListAttaque listAttaque;
 
@@ -31,15 +30,20 @@ public class TwoAttack: EnemyBase
             {
                 return;
             }
+
         
             if (stats.canAttack && Time.time >= stats.lastAttackTime + stats.attackCooldown)
             {
+                stats.isAttacking = false;
+                
                 Attack();
             }
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             Vector2 direction = (target.position - transform.position).normalized;
             if (stats.gethit)
             {
+                stats.isAttacking = false;
+
                 anim.Play("Hit");
             }
             else
@@ -91,7 +95,7 @@ public class TwoAttack: EnemyBase
         }
     }
        
-    protected void Attack()
+    protected new void Attack()
     {
         
         stats.isAttacking = true;
@@ -107,6 +111,7 @@ public class TwoAttack: EnemyBase
             stats.atk1 = false;
             stats.atk2 = true;
             anim.Play("Attack2");
+            
 
 
         }
@@ -114,6 +119,8 @@ public class TwoAttack: EnemyBase
     }
 
    
+    
+    
        
 
 }

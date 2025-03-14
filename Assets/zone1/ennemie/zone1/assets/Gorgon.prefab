@@ -291,15 +291,12 @@ MonoBehaviour:
   health: 500
   maxHealth: 0
   speed: 5
-  attackRange: 1.5
-  damageAttackRange: 0
-  verticalThreshold: 2
   attackCooldown: 2
   isDead: 0
   isAttacking: 0
   lastAttackTime: 0
-  damage_atk1: 20
-  damage_atk2: 50
+  damage_atk1: 50
+  damage_atk2: 70
   damage_special: 10
   atk1: 0
   atk2: 0
