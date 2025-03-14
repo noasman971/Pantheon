@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0807e49578854c948b90732235cef850, type: 3}
+  m_Name: Item
+  m_EditorClassIdentifier: 
+  title: Coeur
+  description: Coeur
+  icon: {fileID: -6517557201486519009, guid: 5ce40104b13d7604e939959b5c23c26f, type: 3}
+  amount: 0
+  goldToGive: 0
+  amountToHeal: 0
+  isStackable: 0
+  type: 0
