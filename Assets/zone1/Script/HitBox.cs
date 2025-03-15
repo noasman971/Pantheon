@@ -21,7 +21,7 @@ public class Hitbox : MonoBehaviour
         if (collision.gameObject.tag == "Ennemy")
         {
             Stats stats = collision.gameObject.GetComponent<Stats>();
-            //EnemyAttack2 enemyAttack2 = collision.gameObject.GetComponent<EnemyAttack2>();
+            //OneAttack enemyAttack2 = collision.gameObject.GetComponent<OneAttack>();
             //enemyAttack2.gethit = true;
             ThreeAttack threeAttack = collision.gameObject.GetComponent<ThreeAttack>();
             Stats stats2 = collision.gameObject.GetComponent<Stats>();

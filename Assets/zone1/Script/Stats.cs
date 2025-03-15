@@ -27,6 +27,8 @@ public class Stats : MonoBehaviour
     public bool gethit = false;
     public int dropRate = 5;
 
+    public bool spriteReverse = false;
+
     void Start()
     {
         maxHealth = health;

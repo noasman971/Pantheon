@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = System.Random;
 
-public class EnemyAttack2 : EnemyBase
+public class OneAttack : EnemyBase
 {
     //private Animator anim;
-    private Transform target;
+    public Transform target;
     public bool gethit = false;
     public ListKatara listKatara;
     public ListAttaque listAttaque;
     public GameObject attackDrop;
-    
+    private Rigidbody2D rb;
     
     void Start()
     {
@@ -20,6 +20,8 @@ public class EnemyAttack2 : EnemyBase
         target = GameObject.FindGameObjectWithTag("Player").transform;
         listKatara = target.GetComponent<ListKatara>();
         listAttaque = target.GetComponent<ListAttaque>();
+        rb = GetComponent<Rigidbody2D>();
+
     }
     
     
@@ -37,12 +39,11 @@ public class EnemyAttack2 : EnemyBase
             {
                 return;
             }
-        
+
             if (stats.canAttack && Time.time >= stats.lastAttackTime + stats.attackCooldown)
             {
                 Attack();
             }
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
             Vector2 direction = (target.position - transform.position).normalized;
             if (stats.gethit)
             {
@@ -56,11 +57,27 @@ public class EnemyAttack2 : EnemyBase
                 rb.linearVelocity = direction * stats.speed;
                 
             }
-            GetComponent<SpriteRenderer>().flipX = direction.x > 0;
+            Debug.Log(gameObject.name + " Direction: " + direction);
+
+            if (stats.spriteReverse)
+            {
+                GetComponent<SpriteRenderer>().flipX = direction.x < 0;
+
+            }
+            else
+            {
+                
+                GetComponent<SpriteRenderer>().flipX = direction.x > 0;
+
+            }
+
         }
+        
         
         if (stats.isDead)
         {
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
             anim.Play("Dead");
             if (anim.speed == 0 && Input.GetKeyDown(KeyCode.M))
@@ -105,7 +122,6 @@ public class EnemyAttack2 : EnemyBase
 
         anim.Play("Attack");
         stats.lastAttackTime = Time.time;
-        Invoke("EndAttack", 1f);
     }
     
 
