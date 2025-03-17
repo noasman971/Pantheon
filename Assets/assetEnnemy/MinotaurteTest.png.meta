@@ -91,7 +91,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -105,7 +105,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -129,7 +129,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -597,7 +597,26 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MinotaurteTest_0: 8311672781694946916
+      MinotaurteTest_1: -828410452608274158
+      MinotaurteTest_10: 8550107993355769794
+      MinotaurteTest_11: -1364965229581493816
+      MinotaurteTest_12: 3110618700709789365
+      MinotaurteTest_13: 7833058349662588072
+      MinotaurteTest_14: 368915643221312782
+      MinotaurteTest_15: -4503812411156978539
+      MinotaurteTest_16: -7146192892726735574
+      MinotaurteTest_17: -1048475032018037093
+      MinotaurteTest_18: -5464372199346594806
+      MinotaurteTest_2: 4712527678517201886
+      MinotaurteTest_3: -8666853587802661761
+      MinotaurteTest_4: 7881257655017140526
+      MinotaurteTest_5: -5401539743226567631
+      MinotaurteTest_6: 27644687400056275
+      MinotaurteTest_7: 8316547590267186321
+      MinotaurteTest_8: -4879079861580288204
+      MinotaurteTest_9: 6235446097552655045
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -12,6 +12,15 @@ public class Hitbox : MonoBehaviour
     {
         playerStamina = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStamina>();
         spell1 = GameObject.FindGameObjectWithTag("Attack").GetComponent<Spell1>();
+        if (spell1 == null)
+        {
+            Debug.Log("No Spell 1");
+        }
+
+        if (playerStamina == null)
+        {
+            Debug.Log("No Player Stamina ");
+        }
         playerStamina.Usestamina(spell1.cost);
 
     }
@@ -28,6 +37,8 @@ public class Hitbox : MonoBehaviour
         if (collision.gameObject.tag == "Ennemy")
         {
             Stats stats = collision.gameObject.GetComponent<Stats>();
+            stats.isAttacking = false;
+
             stats.gethit = true;
             stats.health -= damage;
 
