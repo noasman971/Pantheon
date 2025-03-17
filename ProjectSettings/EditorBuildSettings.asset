@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/acceuil/Badis.unity
+    path: Assets/Scenes/acceuil/Menu.unity
     guid: 55df8568495666c44a070e8950e48f14
   - enabled: 1
     path: Assets/zone1/Scene/FirstZone.unity
@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/zone1/Scene/fight.unity
     guid: b495c95dda62a40f3965ea97906d870b
+  - enabled: 1
+    path: Assets/zone1/Scene/debut map.unity
+    guid: b7eec47945597474c9f490a3a8ceaa7b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100,
       type: 3}

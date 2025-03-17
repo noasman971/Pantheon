@@ -30,7 +30,8 @@ public class Stats : MonoBehaviour
 
     public bool spriteReverse = false;
 
-
+    public bool playerDetected = false;
+    
     void Start()
     {
         maxHealth = health;

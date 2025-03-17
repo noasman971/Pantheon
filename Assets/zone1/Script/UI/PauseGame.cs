@@ -41,7 +41,7 @@ public class PauseGame:MonoBehaviour {
         GameObject.Find("hero_7").GetComponent<Hero>().enabled = true;
         Time.timeScale = 1;
         Cursor.visible = true;
-        SceneManager.LoadScene("Badis");
+        SceneManager.LoadScene("Menu");
 
     }
     

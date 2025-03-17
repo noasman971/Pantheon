@@ -1,8 +1,6 @@
-using System;
-using Unity.VisualScripting;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Random = System.Random;
 
 public class OneAttack : EnemyBase
 {

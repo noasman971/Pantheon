@@ -8,6 +8,9 @@ public class PlayerStamina : MonoBehaviour
     public PlayerStats playerStats;
     public bool paused;
     
+    /// <summary>
+    /// Sets the stamina bar to the correct values.
+    /// </summary>
     void Start()
     {
         playerStats.currentstamina =playerStats. maxstamina;
@@ -15,13 +18,20 @@ public class PlayerStamina : MonoBehaviour
         
     }
     
+    
+    /// <summary>
+    /// Updates the player's stamina by calling the RegenStamina method every frame.
+    /// </summary>
     void Update()
     {
         RegenStamina(playerStats.regenStamina);
         
     }
     
-    // Utilise de la stamina et met à jour la barre de stamina
+    /// <summary>
+    /// Use stamina and update the staminabar
+    /// </summary>
+    /// <param name="stamina">The amount of stamina to subtract from the player's current stamina.</param>
     public void Usestamina(float stamina)
     
     {
@@ -35,7 +45,10 @@ public class PlayerStamina : MonoBehaviour
         
     }
     
-    // régénère la stamina jusqu'au maximum selon la variable en paramètre
+    /// <summary>
+    /// Regenerate the stamina to his maximum
+    /// </summary>
+    /// <param name="regenStamina">The amount of stamina to add from the player's current stamina.</param>
     void RegenStamina(float regenStamina)
     {
         if (paused)
