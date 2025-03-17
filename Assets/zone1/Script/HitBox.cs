@@ -1,10 +1,12 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Hitbox : MonoBehaviour
 {
     PlayerStamina playerStamina;
     Spell1 spell1;
+    public int damage = 30;
+    public float speedAfter = 0;
+    Stats stats;
 
     void Start()
     {
@@ -12,27 +14,48 @@ public class Hitbox : MonoBehaviour
         spell1 = GameObject.FindGameObjectWithTag("Attack").GetComponent<Spell1>();
         playerStamina.Usestamina(spell1.cost);
 
-
     }
+
+
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        int playerLayer = LayerMask.NameToLayer("Player");
+        int attackLayer = LayerMask.NameToLayer("Attack");
 
+        Physics2D.IgnoreLayerCollision(playerLayer, attackLayer, true);
         if (collision.gameObject.tag == "Ennemy")
         {
             Stats stats = collision.gameObject.GetComponent<Stats>();
-            //OneAttack enemyAttack2 = collision.gameObject.GetComponent<OneAttack>();
-            //enemyAttack2.gethit = true;
-            ThreeAttack threeAttack = collision.gameObject.GetComponent<ThreeAttack>();
-            Stats stats2 = collision.gameObject.GetComponent<Stats>();
-            stats2.gethit = true;
-            stats.health -= 30;
+            stats.gethit = true;
+            stats.health -= damage;
 
 
             Debug.Log(stats.health);
 
         }
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+
+            if (collision.gameObject.tag == "Ennemy")
+            {
+                stats = collision.gameObject.GetComponent<Stats>();
+                stats.speed = speedAfter;
+                stats.isAttacking = false;
+
+                stats.health -= damage;
+                
+                Debug.Log(stats.health);
+            }
+        
+    }
+
+
+
+ 
 
 
 

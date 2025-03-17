@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8633312507738302915}
   - component: {fileID: 1182083470883909744}
   - component: {fileID: 7701018883999386870}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SpecialZone
   m_TagString: Special
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 2419573344603983187}
   - component: {fileID: 6508224801163122377}
   - component: {fileID: 5902024571581204189}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BlackWolf
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
@@ -273,11 +273,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 2419573344603983187}
-  gethit: 0
+  target: {fileID: 0}
   listKatara: {fileID: 0}
   listAttaque: {fileID: 0}
-  attackDrop: {fileID: 783504190126968931, guid: 65955001b9f654ff9ad9f1cb81543c5b,
-    type: 3}
+  attackDrop: {fileID: 0}
 --- !u!114 &2419573344603983187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,6 +306,7 @@ MonoBehaviour:
   canAttack: 0
   gethit: 0
   dropRate: 5
+  spriteReverse: 0
 --- !u!60 &6508224801163122377
 PolygonCollider2D:
   m_ObjectHideFlags: 0

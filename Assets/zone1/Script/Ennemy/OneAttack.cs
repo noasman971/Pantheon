@@ -8,7 +8,6 @@ public class OneAttack : EnemyBase
 {
     //private Animator anim;
     public Transform target;
-    public bool gethit = false;
     public ListKatara listKatara;
     public ListAttaque listAttaque;
     public GameObject attackDrop;
@@ -16,7 +15,7 @@ public class OneAttack : EnemyBase
     
     void Start()
     {
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         listKatara = target.GetComponent<ListKatara>();
         listAttaque = target.GetComponent<ListAttaque>();
@@ -57,7 +56,6 @@ public class OneAttack : EnemyBase
                 rb.linearVelocity = direction * stats.speed;
                 
             }
-            Debug.Log(gameObject.name + " Direction: " + direction);
 
             if (stats.spriteReverse)
             {
@@ -93,13 +91,9 @@ public class OneAttack : EnemyBase
                 {
                     Debug.Log("true capture");
                     listKatara.AddKatara(gameObject.name);
-                    foreach (string attackname in listAttaque.attack)
+                    if (!listAttaque.attack.Contains(attackDrop.name))
                     {
-                        if (attackDrop.name != attackname)
-                        {
-                            listAttaque.AddAttack(attackDrop.name);
-
-                        }
+                        listAttaque.AddAttack(attackDrop.name);
                     }
                     Destroy(gameObject);
                     SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
@@ -114,7 +108,7 @@ public class OneAttack : EnemyBase
         }
     }
     
-    protected void Attack()
+    protected new void Attack()
     {
         
         stats.isAttacking = true;

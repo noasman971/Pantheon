@@ -279,10 +279,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 1385590296468983790}
   target: {fileID: 0}
-  gethit: 0
   listKatara: {fileID: 0}
   listAttaque: {fileID: 0}
-  attackDrop: {fileID: 0}
+  attackDrop: {fileID: 783504190126968931, guid: 65955001b9f654ff9ad9f1cb81543c5b,
+    type: 3}
 --- !u!114 &1385590296468983790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 3863136341782842310}
   - component: {fileID: 4567352442064238067}
   - component: {fileID: 3530218532756596399}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SpecialZone
   m_TagString: Special
   m_Icon: {fileID: 0}

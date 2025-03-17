@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8032795676219445959}
   - component: {fileID: 6586134656883737439}
   - component: {fileID: 8993877257002629211}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GreyWolf
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
@@ -155,11 +155,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 8993877257002629211}
-  gethit: 0
+  target: {fileID: 0}
   listKatara: {fileID: 0}
   listAttaque: {fileID: 0}
-  attackDrop: {fileID: 783504190126968931, guid: 65955001b9f654ff9ad9f1cb81543c5b,
-    type: 3}
+  attackDrop: {fileID: 0}
 --- !u!60 &6586134656883737439
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -246,11 +245,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxHealth: 0
   speed: 3
-  attackRange: 1.5
-  damageAttackRange: 2
-  verticalThreshold: 1
   attackCooldown: 2
   isDead: 0
   isAttacking: 0
   lastAttackTime: 0
+  damage_atk1: 0
+  damage_atk2: 0
+  damage_special: 0
+  atk1: 0
+  atk2: 0
+  special: 0
+  canSpecial: 1
+  canAttack: 0
+  gethit: 0
+  dropRate: 5
+  spriteReverse: 0

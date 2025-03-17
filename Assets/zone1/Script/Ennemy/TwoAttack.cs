@@ -7,13 +7,15 @@ public class TwoAttack: EnemyBase
     private Transform target;
     public ListKatara listKatara;
     public ListAttaque listAttaque;
+    private Rigidbody2D rb;
 
     void Start()
     {
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         listKatara = target.GetComponent<ListKatara>();
         listAttaque = target.GetComponent<ListAttaque>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
        void Update()
@@ -38,7 +40,6 @@ public class TwoAttack: EnemyBase
                 
                 Attack();
             }
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
             Vector2 direction = (target.position - transform.position).normalized;
             if (stats.gethit)
             {
@@ -59,6 +60,9 @@ public class TwoAttack: EnemyBase
         
         if (stats.isDead)
         {
+            
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
             anim.Play("Dead");
             if (anim.speed == 0 && Input.GetKeyDown(KeyCode.M))
@@ -74,13 +78,9 @@ public class TwoAttack: EnemyBase
                 {
                     Debug.Log("true capture");
                     listKatara.AddKatara(gameObject.name);
-                    foreach (string attackname in listAttaque.attack)
+                    if (!listAttaque.attack.Contains(attackDrop.name))
                     {
-                        if (attackDrop.name != attackname)
-                        {
-                            listAttaque.AddAttack(attackDrop.name);
-
-                        }
+                        listAttaque.AddAttack(attackDrop.name);
                     }
                     Destroy(gameObject);
                     SceneManager.LoadScene(PlayerPrefs.GetString("scene"));

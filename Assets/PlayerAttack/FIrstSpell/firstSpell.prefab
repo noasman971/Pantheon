@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1781976751886536278}
   - component: {fileID: 5116233812718139384}
   - component: {fileID: 4788541734509978724}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: firstSpell
   m_TagString: Attack
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 5976643395975807208}
   - component: {fileID: 283098951098009687}
   - component: {fileID: 5607313951116121702}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Attack
   m_Icon: {fileID: 0}
@@ -293,3 +293,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bfe1dc834d41ea48abfa9a3954ece40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 30

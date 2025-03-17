@@ -7,6 +7,7 @@ public class Stats : MonoBehaviour
     public float maxHealth;
     
     public  float speed = 3f;
+    public float maxSpeed;
     public  float attackCooldown = 2f;
     
     public bool isDead = false;
@@ -29,8 +30,10 @@ public class Stats : MonoBehaviour
 
     public bool spriteReverse = false;
 
+
     void Start()
     {
         maxHealth = health;
+        maxSpeed = speed;
     }
 }

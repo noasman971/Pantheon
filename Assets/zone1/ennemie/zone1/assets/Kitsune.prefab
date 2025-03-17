@@ -130,7 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 8883599040938730030}
-  attackDrop: {fileID: 0}
+  attackDrop: {fileID: 5889807823534899215, guid: 1b74744b15e30954284fc4d03d4b50f9,
+    type: 3}
   listKatara: {fileID: 0}
   listAttaque: {fileID: 0}
 --- !u!114 &8883599040938730030
@@ -162,6 +163,7 @@ MonoBehaviour:
   canAttack: 0
   gethit: 0
   dropRate: 5
+  spriteReverse: 0
 --- !u!50 &4025194363220000259
 Rigidbody2D:
   serializedVersion: 5

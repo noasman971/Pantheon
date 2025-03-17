@@ -2,23 +2,22 @@ using UnityEngine;
 
 public class Spell1 : MonoBehaviour, Attackable
 {
-    private Animator anim;
     public float cost;
     private Vector2 dir;
     public GameObject target;
     public PlayerStats playerStats;
+    Stats stats;
+    public float speed;
+    public bool flip = true;
 
     void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player");
         playerStats = target.GetComponent<PlayerStats>();
+        stats = GameObject.FindGameObjectWithTag("Ennemy").GetComponent<Stats>();
+        speed = stats.maxSpeed;
     }
-    
-    void Start()
-    {
-        anim = GetComponent<Animator>();
 
-    }
 
     void EndAnimation()
     {
@@ -35,8 +34,13 @@ public class Spell1 : MonoBehaviour, Attackable
 
         }
     }
-    
 
+
+    void BlockEnnemy()
+    {
+        stats.isAttacking = false;
+        stats.speed = speed;
+    }
 
     public void Attack(GameObject playerRef)
     {
@@ -44,30 +48,45 @@ public class Spell1 : MonoBehaviour, Attackable
         SpriteRenderer spell = newSpell.GetComponent<SpriteRenderer>();
         UseStamina(cost);
 
-        Vector2 playerDirection;
-        playerDirection.x = Input.GetAxisRaw("Horizontal");
-        playerDirection.y = Input.GetAxisRaw("Vertical");
-    
-        if (playerDirection != Vector2.zero)
+        if (flip)
         {
-            playerDirection.Normalize();
-        }
-    
-        if (Mathf.Abs(playerDirection.y) > Mathf.Abs(playerDirection.x))
-        {
-            if (playerDirection.y > 0)
-                spell.transform.Rotate(0, 0, 90);
+            Vector2 playerDirection;
+            playerDirection.x = Input.GetAxisRaw("Horizontal");
+            playerDirection.y = Input.GetAxisRaw("Vertical");
+
+            if (playerDirection != Vector2.zero)
+            {
+                playerDirection.Normalize();
+            }
+
+            if (Mathf.Abs(playerDirection.y) > Mathf.Abs(playerDirection.x))
+            {
+                if (playerDirection.y > 0)
+                {
+                    spell.transform.Rotate(0, 0, 90);
+
+                }
+                else
+                {
+                    spell.transform.Rotate(0, 0, -90);
+
+                }
+            }
             else
-                spell.transform.Rotate(0, 0, -90);
-        }
-        else
-        {
-            if (playerDirection.x > 0)
-                spell.transform.Rotate(0, 0, 0);
-            else
-                spell.transform.Rotate(0, 0, 180);
+            {
+                if (playerDirection.x > 0)
+                {
+                    spell.transform.Rotate(0, 0, 0);
+                }
+                else
+                {
+                    spell.transform.Rotate(0, 0, 180);
+                }
+            }
         }
     }
 
-  
+
+
+
 }
