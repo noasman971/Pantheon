@@ -25,6 +25,8 @@ public class PlaceObject : MonoBehaviour
     public Dictionary<String, List<Vector2Int>> posobjects = new();
 
     public int compteurzone = 0;
+
+    public HashSet<Vector2Int> allobjet = new HashSet<Vector2Int>() ;
     
     public List<Vector2Int> totalsroomsminmax(int min, int max)
     {
@@ -54,7 +56,7 @@ public class PlaceObject : MonoBehaviour
             }
         }
         int totalzones = 2;
-        int fixedfirstzonesize = 2;
+        int fixedfirstzonesize = 3;
         List<float> factorzone = new List<float> { 1f, 1.5f};
         float totalfactorzone = 0;
         foreach (var factor in factorzone)
@@ -68,7 +70,7 @@ public class PlaceObject : MonoBehaviour
         allsize.Add((int)(resterooms * (factorzone[0] / totalfactorzone)));
         allsize.Add(resterooms - allsize[0]);
 
-        int startroom = 0;
+        int startroom = 1;
         int endroom = fixedfirstzonesize;
         
         interval.Add((startroom, endroom));
@@ -88,20 +90,20 @@ public class PlaceObject : MonoBehaviour
             compteurzone++;
         }
         
-        
-        
-        
     }
     
     
     
 
-    public void placeobjects(String objet, int min, int max, int nbrobjetmin, int nbrobjetmax=-2, bool ActivateBorder = false, bool ActivateAround = false)
+    public void placeobjects(String objet, Vector2Int objectsize, int min, int max, int nbrobjetmin, int nbrobjetmax=-2, bool ActivateBorder = false, bool ActivateAround = false)
     {
+        
+
         if (nbrobjetmax == -2)
         {
             nbrobjetmax = nbrobjetmin;
         }
+        
         posobjects[objet] = new List<Vector2Int>();
         List<Vector2Int> roomsplaceobject= totalsroomsminmax(min, max);
 
@@ -116,26 +118,46 @@ public class PlaceObject : MonoBehaviour
                     {
                         int nbrobjectperrooms = Random.Range(nbrobjetmin, nbrobjetmax + 1);
                         int placedObjects = 0;
-                        maxAttempts = 100;
+                        maxAttempts = 10000;
                         while(placedObjects < nbrobjectperrooms)
                         {
                             int posrandom = Random.Range(0, allroompos.Count);
                             Vector2Int findpos = allroompos[posrandom];
                             bool doblebojet = false;
                             bool around = false;
-                            foreach (var (nameobjet,allposobjet) in posobjects)
+                            bool corridor = false;
+                            
+                            
+                            for (int i = 0; i < objectsize.x; i++)
                             {
-                                foreach (var posbjet in allposobjet)
+                                for (int j = 0; j < objectsize.y; j++)
                                 {
-                                    if (posbjet == findpos)
+                                    Vector2Int tilePos = findpos + new Vector2Int(i, j);
+                                    if (allobjet.Contains(tilePos))
                                     {
-                                        doblebojet = true;
-                                        break;
+                                        
+                                            doblebojet = true;
+                                            break;
                                     }
                                 }
                                 if (doblebojet) break;
                             }
-
+                            
+                            for (int i = 0; i < objectsize.x; i++)
+                            {
+                                for (int j = 0; j < objectsize.y; j++)
+                                {
+                                    Vector2Int tilePos = findpos + new Vector2Int(i, j);
+                                    if (allcorridors.Contains(tilePos))
+                                    {
+                                        
+                                        corridor = true;
+                                        break;
+                                    }
+                                }
+                                if (corridor) break;
+                            }
+                            
                             if (ActivateAround)
                             {
                                 foreach (var dir in alldirection_diagonale)
@@ -155,18 +177,25 @@ public class PlaceObject : MonoBehaviour
                                 }
                                 
                             }
-
-                            if (!around)
+                            
+                            if (!doblebojet && !corridor)
                             {
-                                if (!doblebojet)
-                                {
-                                    if (!allcorridors.Contains(findpos))
+                                    for (int i = 0; i < objectsize.x; i++)
                                     {
-                                        posobjects[objet].Add(findpos);
-                                        placedObjects++;
+                                        for (int j = 0; j < objectsize.y; j++)
+                                        {
+                                            Vector2Int tilePos = findpos + new Vector2Int(i, j);
+                                            allobjet.Add(tilePos);
+                                            if (i == 0 && j == 0)
+                                            {
+                                                posobjects[objet].Add(tilePos);
+                                                placedObjects++;
+                                            }
+                                        }
                                     }
-                                }
+                                
                             }
+                            
 
                             maxAttempts--;
                             if (maxAttempts == 0)

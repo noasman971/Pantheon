@@ -7,5 +7,8 @@ public class AllObject : MonoBehaviour
 {
     public GameObject
         parentFolder,
-        rock;
+        rock,
+        pilier,
+        pique,
+        caisse;
 }
