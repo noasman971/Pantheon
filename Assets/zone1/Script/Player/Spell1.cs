@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Spell1 : MonoBehaviour, Attackable
 {
@@ -7,15 +8,18 @@ public class Spell1 : MonoBehaviour, Attackable
     public GameObject target;
     public PlayerStats playerStats;
     Stats stats;
-    public float speed;
     public bool flip = true;
 
     void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player");
         playerStats = target.GetComponent<PlayerStats>();
-        stats = GameObject.FindGameObjectWithTag("Ennemy").GetComponent<Stats>();
-        speed = stats.maxSpeed;
+        if (SceneManager.GetActiveScene().name == "fight")
+        {
+            stats = GameObject.FindGameObjectWithTag("Ennemy").GetComponent<Stats>();
+        }
+
+        
     }
 
     /// <summary>
@@ -34,8 +38,10 @@ public class Spell1 : MonoBehaviour, Attackable
     /// </summary>
     void BlockEnnemy()
     {
+        stats = GameObject.FindGameObjectWithTag("Ennemy").GetComponent<Stats>();
+
         stats.isAttacking = false;
-        stats.speed = speed;
+        stats.speed = stats.maxSpeed;
     }
     
     
@@ -47,7 +53,7 @@ public class Spell1 : MonoBehaviour, Attackable
     public void Attack(GameObject playerRef)
     {
         PlayerStats playerStats = playerRef.GetComponent<PlayerStats>();
-        if (playerStats.currentstamina > cost)
+        if (playerStats.currentstamina > cost && SceneManager.GetActiveScene().name == "fight")
         {
             playerStats.isAttacking = true;
             GameObject newSpell = Instantiate(this.gameObject, playerRef.transform.position, Quaternion.identity);

@@ -11,7 +11,9 @@ public class ListAttaque : MonoBehaviour
 
     private void Awake()
     {
+        
         filePath = Application.persistentDataPath + "/attack.json";
+        Debug.Log(filePath);
         LoadList(); 
     }
     
@@ -38,13 +40,14 @@ public class ListAttaque : MonoBehaviour
     }
     
     /// <summary>
-    /// Clears the attack list in memory and empties the saved file.
+    /// Clears the attack list in memory and updates the saved file with an empty attack list.
     /// </summary>
     public void ClearList()
     {
         attack.Clear(); // Vide la liste en mémoire
-        File.WriteAllText(filePath, ""); // Écrit un fichier vide
-        Debug.Log("Fichier JSON vidé : " + filePath);
+        string json = JsonUtility.ToJson(new SaveData(attack)); // Convertit la liste vide en JSON
+        File.WriteAllText(filePath, json); // Écrit dans le fichier JSON
+        Debug.Log("Liste vidée et fichier mis à jour : " + filePath);
     }
 
     /// <summary>

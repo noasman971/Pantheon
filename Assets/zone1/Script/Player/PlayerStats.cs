@@ -19,7 +19,8 @@ public class PlayerStats : MonoBehaviour
     public bool isAttacking = false;
     public float currentSpeed;
     public bool moveBlock = false;
-    
+    public bool canLoad = false;
+    public bool loaded = false;
 
 
 

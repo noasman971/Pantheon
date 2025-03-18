@@ -17,6 +17,15 @@ public class Hero : MonoBehaviour
     
     void Start()
     {
+        if (PlayerPrefs.GetInt("Loaded", 3) == 1)
+        {
+            float currentX = PlayerPrefs.GetFloat("positionX", transform.position.x);
+            float currentY = PlayerPrefs.GetFloat("positionY", transform.position.y);
+            float currentZ = PlayerPrefs.GetFloat("positionZ", transform.position.z);
+            transform.position = new Vector3(currentX, currentY, currentZ);
+            PlayerPrefs.SetInt("Loaded", 0);
+            
+        }
         playerStats.canDash = true;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();

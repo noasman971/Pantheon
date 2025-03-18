@@ -298,13 +298,14 @@ MonoBehaviour:
   health: 300
   maxHealth: 0
   speed: 3
+  maxSpeed: 0
   attackCooldown: 2
   isDead: 0
   isAttacking: 0
   lastAttackTime: 0
-  damage_atk1: 60
-  damage_atk2: 90
-  damage_special: 300
+  damage_atk1: 100
+  damage_atk2: 0
+  damage_special: 0
   atk1: 0
   atk2: 0
   special: 0
@@ -313,6 +314,7 @@ MonoBehaviour:
   gethit: 0
   dropRate: 5
   spriteReverse: 1
+  playerDetected: 0
 --- !u!95 &5451031382085759802
 Animator:
   serializedVersion: 7

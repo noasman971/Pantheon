@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/zone1/Scene/MapBossFinal.unity.meta
 guid: c0ec196db8d4b7f4fbbe76ae7db21dc7
+========
+guid: 959a4d2aab31b954788a14860bba48f1
+folderAsset: yes
+>>>>>>>> a99c96632c00194cd85d58c312b7f905e8ec04f8:Assets/Prefabs/Dungeon Prefabs.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

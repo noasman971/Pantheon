@@ -297,9 +297,9 @@ MonoBehaviour:
   isDead: 0
   isAttacking: 0
   lastAttackTime: 0
-  damage_atk1: 50
-  damage_atk2: 70
-  damage_special: 10
+  damage_atk1: 100
+  damage_atk2: 140
+  damage_special: 20
   atk1: 0
   atk2: 0
   special: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
   gethit: 0
   dropRate: 5
   spriteReverse: 0
-  flipAttack: 0
+  playerDetected: 0
 --- !u!50 &8768561852223224975
 Rigidbody2D:
   serializedVersion: 5

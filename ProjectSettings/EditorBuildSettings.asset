@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/zone1/Scene/debut map.unity
     guid: b7eec47945597474c9f490a3a8ceaa7b
+  - enabled: 1
+    path: Assets/zone1/Scene/Route 1.unity
+    guid: 27077b3f5a3c0a74bb6f002daf102f5c
+  - enabled: 1
+    path: Assets/zone1/Scene/Starter.unity
+    guid: 65c9a6be02b994ceeb4c8939c8d8fb5c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100,
       type: 3}

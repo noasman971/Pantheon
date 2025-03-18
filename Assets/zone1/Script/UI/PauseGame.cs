@@ -3,11 +3,13 @@ using UnityEngine.SceneManagement;
 public class PauseGame:MonoBehaviour {
     private bool pause = false;
     public PlayerStamina playerstamina;
+    public GameObject player;
     
     void Start()
     { 
+        player = GameObject.FindGameObjectWithTag("Player");
         GameObject.Find("pauseMenu").GetComponent<Canvas>().enabled = false;
-        playerstamina = GameObject.Find("hero_7").GetComponent<PlayerStamina>();
+        playerstamina = player.GetComponent<PlayerStamina>();
 
     }
     
@@ -19,6 +21,9 @@ public class PauseGame:MonoBehaviour {
     
     }
  
+    /// <summary>
+    /// Active the movement of the player & desactive freeze time and pauseUI
+    /// </summary>
     public void Resume()
     {
         pause = false;
@@ -31,11 +36,11 @@ public class PauseGame:MonoBehaviour {
     }
 
 
-    public void Settings()
-    {
-        Debug.Log("Settings");
-    }
+ 
 
+    /// <summary>
+    /// Return to the scene meny
+    /// </summary>
     public void MainMenu()
     {
         GameObject.Find("hero_7").GetComponent<Hero>().enabled = true;
@@ -45,6 +50,9 @@ public class PauseGame:MonoBehaviour {
 
     }
     
+    /// <summary>
+    /// If we press P the game is pause and we cant move
+    /// </summary>
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyUp(KeyCode.JoystickButton0))
@@ -66,6 +74,24 @@ public class PauseGame:MonoBehaviour {
             {
                 Resume();
             }
+        }
+    }
+
+    /// <summary>
+    /// Save the position x,y,z and active the button load game in menu
+    /// </summary>
+    public void Save()
+    {
+        
+        if (SceneManager.GetActiveScene().name != "Fight")
+        {
+            PlayerPrefs.SetString("scene", SceneManager.GetActiveScene().name);
+            PlayerPrefs.SetFloat("positionX",  player.transform.position.x);
+            PlayerPrefs.SetFloat("positionY",  player.transform.position.y);
+            PlayerPrefs.SetFloat("positionZ",  player.transform.position.z);
+            PlayerPrefs.SetInt("canLoad",  1);
+            PlayerPrefs.Save();
+            Debug.Log("Save");
         }
     }
 

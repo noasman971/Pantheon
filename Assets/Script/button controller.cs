@@ -40,6 +40,11 @@ public class buttoncontroller : MonoBehaviour
         GameObject.Find("EXIT BTN").SetActive(false);
         newGameButton.SetActive(true);
         loadButton.SetActive(true);
+        if (PlayerPrefs.GetInt("canLoad", 0) == 0)
+        {
+            loadButton.SetActive(false);
+
+        }
 
 
         
@@ -48,20 +53,28 @@ public class buttoncontroller : MonoBehaviour
 
     public void NewGame()
     {
+        PlayerPrefs.SetInt("canLoad", 0);
         listAttaque.ClearList();
         listKatara.ClearList();
-        PlayerPrefs.SetFloat("positionX",  -0.34f);
-        PlayerPrefs.SetFloat("positionY",  -1.04f);
+        PlayerPrefs.SetFloat("positionX",  -24f);
+        PlayerPrefs.SetFloat("positionY",  4.25f);
         PlayerPrefs.SetFloat("positionZ",  0);
         PlayerPrefs.Save();
-        SceneManager.LoadScene("debut map");
+        SceneManager.LoadScene("Starter");
         
     }
 
 
     public void LoadGame()
     {
-        SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
+        if (SceneManager.GetActiveScene().name != "Fight")
+        {
+            SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
+            PlayerPrefs.SetInt("Loaded", 1);
+
+            Debug.Log("Load Game");
+        }
+        
     }
 
 

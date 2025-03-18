@@ -14,7 +14,7 @@ public class GenerationDonjon : MonoBehaviour
     public Tilemap sol, mur, soltest;
 
     [HideInInspector] public TileBase
-        tile_solcoinhg1,
+        tile_solcoinhg1, 
         tile_solcoinhd1,
         tile_solcoinbg1,
         tile_solcoinbd1,
@@ -64,7 +64,11 @@ public class GenerationDonjon : MonoBehaviour
     public PlaceObject po;
     public Dictionary<String, List<Vector2Int>> posobjects => po.posobjects;
 
-    public AffichageTiles at;
+    public AllObject at;
+    
+    public List<GameObject> spawnedobjects = new List<GameObject>();
+    
+    Vector2Int start = new (0, 0);
     
     public void GenerateMap()
     {
@@ -86,8 +90,18 @@ public class GenerationDonjon : MonoBehaviour
         ro.roomsorder.Clear();
         ro.visitedpos.Clear();
         ro.allposrooms.Clear();
+        po.interval.Clear();
+        po.allobjet.Clear();
+        po.posobjects.Clear();
+        po.dirobject.Clear();
         
         ro.compteur = 1;
+        
+        foreach (GameObject obj in spawnedobjects)
+        {
+            DestroyImmediate(obj); 
+        }
+        spawnedobjects.Clear(); 
         
         // Generate map
         crd.setstart_position_corridors(new Vector2Int(0, 0));
@@ -110,21 +124,56 @@ public class GenerationDonjon : MonoBehaviour
             }
             positions.UnionWith(crd.RandomAllWalker());
         }
-
+        
+        
+        
         positions.UnionWith(allcorridors);
         crd.CreateWalls(positions);
         crd.CreateWalls_coin(positions);
         crd.verifpositionrooms();
+        // ro.doubleposallcoridors();
         foreach (var posroom in crd.delpositionroom) positionroom.Remove(posroom);
         foreach (var posroom in crd.endcorridors) positionroom.Add(posroom);
+
+
+        if (!positionroom.Contains(start))
+        {
+            positionroom.Add(start);
+        }
         
         ro.allorderroom();
+        ro.doubleposroomsorder();
         
         if (SmoothActivate) crd.Smooth(positions, allneightborcase);
         if (DeleteSoloCasesActivate) crd.DeleteSoloCases(positions, allneightborcase);
         
-        // ro.stockposrooms();
-        // po.placeobjects("caillou",3,10,50);
+        foreach (var (roomcompteur, startposrooms) in ro.roomsorder.ToList())
+        {
+            
+            if (startposrooms == start)
+            {
+                // Suppression + création de la nouvelle valeur
+                ro.roomsorder.Remove((roomcompteur, startposrooms));
+                ro.roomsorder.Add((0, startposrooms));
+            }
+        }
+
+
+        ro.stockposrooms();
+        ro.stockposroomsneight();
+        po.compteurzone = 0;
+        po.intervalobject();
+        List<(int,int)> interval= po.interval;
+        
+        
+        // po.placeobjects("pique",new Vector2Int(1,1), interval[1].Item1,interval[1].Item2, 3,  ActivateBorder: false, ActivateAround:false);
+        po.placeobjects("caisse", new Vector2Int(2,2), 0,0, 20,ActivateBorder: false, ActivateAround:false);
+        po.placeobjects("caillou",new Vector2Int(1,1), 0,0, 0,ActivateBorder: false, ActivateAround:false);
+        if (po.maxAttempts == 0)
+        {
+            Debug.Log("Impossible de placer les objets");
+            return;
+        }
         
         foreach (var pos in positions)
         {
@@ -401,17 +450,60 @@ public class GenerationDonjon : MonoBehaviour
             }
         }
         
+        if (at.parentFolder == null)
+        {
+            at.parentFolder = new GameObject("GeneratedObjects");
+        }
+        
         foreach (var (name_object , allposobject) in posobjects)
         {
-            if (name_object == "caillou")
-            {
                 for (int i = 0; i < allposobject.Count; i++)
                 {
-                    var tileposition_sol = sol.WorldToCell((Vector3Int)allposobject[i]);
-                    sol.SetTile(tileposition_sol, tile_test3);
+                    GameObject objet = new GameObject();
+                    if (name_object == "caillou")
+                    {
+                        objet = at.rock;
+                    }
+                    else if (name_object == "pilier")
+                    {
+                         objet = at.pilier;
+                         Vector3 worldPosition = sol.CellToWorld((Vector3Int)allposobject[i]);
+                         GameObject newObject = Instantiate(objet, worldPosition, Quaternion.identity);
+                         newObject.name = $"{name_object}_{i}";
+                         newObject.transform.SetParent(at.parentFolder.transform);
+                         spawnedobjects.Add(newObject);
+                    }
+                    else if (name_object == "pique")
+                    {
+                        objet = at.pique;
+                    }
+                    else if (name_object == "caisse")
+                    {
+                        objet = at.caisse;
+                        Vector3 worldPosition = sol.CellToWorld((Vector3Int)allposobject[i]);
+                        GameObject newObject = Instantiate(objet, worldPosition, Quaternion.identity);
+                        newObject.name = $"{name_object}_{i}";
+                        newObject.transform.SetParent(at.parentFolder.transform);
+                        spawnedobjects.Add(newObject);
+                    }
+
+                    if (name_object != "caisse")
+                    {
+                        Vector3 worldPosition = sol.CellToWorld((Vector3Int)allposobject[i]) + new Vector3(0.5f, 0.5f, 0);
+                        GameObject newObject = Instantiate(objet, worldPosition, Quaternion.identity);
+                        newObject.name = $"{name_object}_{i}";
+                        newObject.transform.SetParent(at.parentFolder.transform);
+                        spawnedobjects.Add(newObject);
+                    }
                 }
-                
-            }
+        }
+
+        foreach (var pos in po.allobjet)
+        {
+            Vector3 worldPosition = sol.CellToWorld((Vector3Int)pos);
+            GameObject newObject = Instantiate(at.test, worldPosition, Quaternion.identity);
+            newObject.name = "test";
+            spawnedobjects.Add(newObject);
         }
     }
 
