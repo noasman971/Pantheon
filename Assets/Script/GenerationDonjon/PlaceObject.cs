@@ -27,6 +27,7 @@ public class PlaceObject : MonoBehaviour
     public int compteurzone = 0;
 
     public HashSet<Vector2Int> allobjet = new HashSet<Vector2Int>() ;
+    public HashSet<Vector2Int> dirobject = new HashSet<Vector2Int>();
     
     public List<Vector2Int> totalsroomsminmax(int min, int max)
     {
@@ -86,7 +87,6 @@ public class PlaceObject : MonoBehaviour
         
         foreach (var (start, end) in interval)
         {
-            Debug.Log($"Zone {compteurzone} pour {start} to {end}");
             compteurzone++;
         }
         
@@ -118,84 +118,79 @@ public class PlaceObject : MonoBehaviour
                     {
                         int nbrobjectperrooms = Random.Range(nbrobjetmin, nbrobjetmax + 1);
                         int placedObjects = 0;
-                        maxAttempts = 10000;
-                        while(placedObjects < nbrobjectperrooms)
+                        maxAttempts = 100000;
+                        while (placedObjects < nbrobjectperrooms)
                         {
                             int posrandom = Random.Range(0, allroompos.Count);
                             Vector2Int findpos = allroompos[posrandom];
-                            bool doblebojet = false;
-                            bool around = false;
-                            bool corridor = false;
-                            
-                            
-                            for (int i = 0; i < objectsize.x; i++)
+                            bool canplaceobjet = true;
+                            dirobject.Clear();
+
+
+                            if (objet == "caisse")
                             {
-                                for (int j = 0; j < objectsize.y; j++)
+                                foreach (var dir in alldirection_diagonale)
                                 {
-                                    Vector2Int tilePos = findpos + new Vector2Int(i, j);
-                                    if (allobjet.Contains(tilePos))
+                                    if (allobjet.Contains(findpos + dir))
                                     {
-                                        
-                                            doblebojet = true;
-                                            break;
+                                        canplaceobjet = false;
                                     }
-                                }
-                                if (doblebojet) break;
-                            }
-                            
-                            for (int i = 0; i < objectsize.x; i++)
-                            {
-                                for (int j = 0; j < objectsize.y; j++)
-                                {
-                                    Vector2Int tilePos = findpos + new Vector2Int(i, j);
-                                    if (allcorridors.Contains(tilePos))
+
+                                    if (allcorridors.Contains(findpos + dir))
                                     {
-                                        
-                                        corridor = true;
+                                        canplaceobjet = false;
+                                    }
+
+                                    if (!canplaceobjet)
+                                    {
                                         break;
                                     }
+
+                                    dirobject.Add(findpos + dir);
                                 }
-                                if (corridor) break;
+                            }
+
+                            if (allobjet.Contains(findpos))
+                            {
+                                canplaceobjet = false;
+                            }
+
+                            if (allcorridors.Contains(findpos))
+                            {
+                                canplaceobjet = false;
                             }
                             
+
                             if (ActivateAround)
                             {
                                 foreach (var dir in alldirection_diagonale)
                                 {
-                                    foreach (var (nameobjet,allposobjet) in posobjects)
+                                    if (allobjet.Contains(findpos + dir))
                                     {
-                                        foreach (var posbjet in allposobjet)
-                                        {
-                                            if (posbjet == findpos+dir)
-                                            {
-                                                around = true;
-                                                break;
-                                            }
-                                        }
-                                        if (doblebojet) break;
+                                        canplaceobjet = false;
+                                        Debug.Log("f");
                                     }
+                                    if (!canplaceobjet)
+                                    {
+                                        break;
+                                    }
+
+                                    dirobject.Add(findpos + dir);
                                 }
                                 
                             }
-                            
-                            if (!doblebojet && !corridor)
+
+                            if (canplaceobjet)
                             {
-                                    for (int i = 0; i < objectsize.x; i++)
-                                    {
-                                        for (int j = 0; j < objectsize.y; j++)
-                                        {
-                                            Vector2Int tilePos = findpos + new Vector2Int(i, j);
-                                            allobjet.Add(tilePos);
-                                            if (i == 0 && j == 0)
-                                            {
-                                                posobjects[objet].Add(tilePos);
-                                                placedObjects++;
-                                            }
-                                        }
-                                    }
-                                
+                                if (objet == "caisse")
+                                {
+                                    allobjet.UnionWith(dirobject);
+                                }
+
+                                allobjet.Add(findpos);
+                                posobjects[objet].Add(findpos);
+                                placedObjects++;
                             }
-                            
 
                             maxAttempts--;
                             if (maxAttempts == 0)
@@ -214,58 +209,81 @@ public class PlaceObject : MonoBehaviour
                     {
                         int nbrobjectperrooms = Random.Range(nbrobjetmin, nbrobjetmax + 1);
                         int placedObjects = 0;
-                        maxAttempts = 100;
+                        maxAttempts = 1000000;
                         while(placedObjects < nbrobjectperrooms)
                         {
                             int posrandom = Random.Range(0, allroompos.Count);
                             Vector2Int findpos = allroompos[posrandom];
                             bool doblebojet = false;
                             bool around = false;
-                            foreach (var (nameobjet,allposobjet) in posobjects)
-                            {
-                                foreach (var posbjet in allposobjet)
-                                {
-                                    if (posbjet == findpos)
-                                    {
-                                        doblebojet = true;
-                                        break;
-                                    }
-                                }
-                                if (doblebojet) break;
-                            }
+                            HashSet<Vector2Int> dirobject = new HashSet<Vector2Int>();
 
-                            if (ActivateAround)
+
+                            if (objet == "caisse")
                             {
                                 foreach (var dir in alldirection_diagonale)
                                 {
-                                    foreach (var (nameobjet,allposobjet) in posobjects)
+                                    if (allobjet.Contains(findpos + dir))
                                     {
-                                        foreach (var posbjet in allposobjet)
-                                        {
-                                            if (posbjet == findpos+dir)
-                                            {
-                                                around = true;
-                                                break;
-                                            }
-                                        }
-                                        if (doblebojet) break;
+                                        doblebojet = true;
                                     }
+
+                                    if (allcorridors.Contains(findpos + dir))
+                                    {
+                                        doblebojet = true;
+                                    }
+
+                                    if (doblebojet)
+                                    {
+                                        break;
+                                    }
+                                    dirobject.Add(findpos + dir);
                                 }
-                                
                             }
 
-                            if (!around)
+                            if (allobjet.Contains(findpos))
                             {
-                                if (!doblebojet)
-                                {
-                                    if (!allcorridors.Contains(findpos))
-                                    {
-                                        posobjects[objet].Add(findpos);
-                                        placedObjects++;
-                                    }
-                                }
+                                doblebojet = true;
                             }
 
+                            if (allcorridors.Contains(findpos))
+                            {
+                                doblebojet = true;
+                            }
+                            
+                            
+                            // if (ActivateAround)
+                            // {
+                            //     foreach (var dir in alldirection_diagonale)
+                            //     {
+                            //         foreach (var (nameobjet,allposobjet) in posobjects)
+                            //         {
+                            //             foreach (var posbjet in allposobjet)
+                            //             {
+                            //                 if (posbjet == findpos+dir)
+                            //                 {
+                            //                     around = true;
+                            //                     break;
+                            //                 }
+                            //                 
+                            //             }
+                            //             if (doblebojet) break;
+                            //         }
+                            //     }
+                            //     
+                            // }
+                            
+                            if (!doblebojet)
+                            {
+                                if (objet == "caisse")
+                                {
+                                    allobjet.UnionWith(dirobject);
+                                }
+                                allobjet.Add(findpos);
+                                posobjects[objet].Add(findpos);
+                                placedObjects++;
+                            }
+                            
                             maxAttempts--;
                             if (maxAttempts == 0)
                             {

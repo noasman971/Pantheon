@@ -10,5 +10,6 @@ public class AllObject : MonoBehaviour
         rock,
         pilier,
         pique,
-        caisse;
+        caisse,
+        test;
 }

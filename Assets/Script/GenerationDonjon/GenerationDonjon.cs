@@ -92,6 +92,8 @@ public class GenerationDonjon : MonoBehaviour
         ro.allposrooms.Clear();
         po.interval.Clear();
         po.allobjet.Clear();
+        po.posobjects.Clear();
+        po.dirobject.Clear();
         
         ro.compteur = 1;
         
@@ -163,9 +165,10 @@ public class GenerationDonjon : MonoBehaviour
         po.intervalobject();
         List<(int,int)> interval= po.interval;
         
-        po.placeobjects("caillou",new Vector2Int(1,1), interval[0].Item1,interval[0].Item2, 3,ActivateBorder: true, ActivateAround:false);
+        
         // po.placeobjects("pique",new Vector2Int(1,1), interval[1].Item1,interval[1].Item2, 3,  ActivateBorder: false, ActivateAround:false);
-        po.placeobjects("caisse", new Vector2Int(2,2), 0,0, 10,ActivateBorder: false, ActivateAround:false);
+        po.placeobjects("caisse", new Vector2Int(2,2), 0,0, 20,ActivateBorder: false, ActivateAround:false);
+        po.placeobjects("caillou",new Vector2Int(1,1), 0,0, 0,ActivateBorder: false, ActivateAround:false);
         if (po.maxAttempts == 0)
         {
             Debug.Log("Impossible de placer les objets");
@@ -486,14 +489,21 @@ public class GenerationDonjon : MonoBehaviour
 
                     if (name_object != "caisse")
                     {
-                        Vector3 worldPosition =
-                            sol.CellToWorld((Vector3Int)allposobject[i]);
+                        Vector3 worldPosition = sol.CellToWorld((Vector3Int)allposobject[i]) + new Vector3(0.5f, 0.5f, 0);
                         GameObject newObject = Instantiate(objet, worldPosition, Quaternion.identity);
                         newObject.name = $"{name_object}_{i}";
                         newObject.transform.SetParent(at.parentFolder.transform);
                         spawnedobjects.Add(newObject);
                     }
                 }
+        }
+
+        foreach (var pos in po.allobjet)
+        {
+            Vector3 worldPosition = sol.CellToWorld((Vector3Int)pos);
+            GameObject newObject = Instantiate(at.test, worldPosition, Quaternion.identity);
+            newObject.name = "test";
+            spawnedobjects.Add(newObject);
         }
     }
 
