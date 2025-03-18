@@ -128,6 +128,8 @@ MonoBehaviour:
   cost: 400
   target: {fileID: 0}
   playerStats: {fileID: 0}
+  speed: 0
+  flip: 1
 --- !u!1 &6956588015055399035
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,3 +296,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
+  speedAfter: 0
+  parent: {fileID: 783504190126968931}

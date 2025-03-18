@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class DetectZoneEnnemy : MonoBehaviour
 {
+    
+    // Pour Idle si loin du joueur
 
     public GameObject parent;
     public Stats stats;

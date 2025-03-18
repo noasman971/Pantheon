@@ -17,9 +17,11 @@ public class EnnemyHitbox : MonoBehaviour
 
     }
     
-    // Faut que la boule de feu suit le joueur
-    
-    
+   
+    /// <summary>
+    /// If we enter in collision trigger of the player do damage
+    /// </summary>
+    /// <param name="other"> The colision of the player</param>
     void OnTriggerEnter2D(Collider2D other)
     {
         
@@ -48,6 +50,10 @@ public class EnnemyHitbox : MonoBehaviour
        
     }
 
+    /// <summary>
+    /// If we stay in collision trigger of the player do damage
+    /// </summary>
+    /// <param name="other"></param>
     void OnTriggerStay2D(Collider2D other)
     {
         if (gameObject.name == "SpecialZone")
@@ -69,6 +75,10 @@ public class EnnemyHitbox : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Stop Attack animation and do run animation
+    /// </summary>
+    /// <param name="other"></param>
     void OnTriggerExit2D(Collider2D other)
     {
         if (gameObject.name == "SpecialZone")

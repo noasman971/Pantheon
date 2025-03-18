@@ -10,23 +10,22 @@ public class KataraInventory : MonoBehaviour
     public ListKatara listKatara;
     public List<GameObject> Katara;
     public List<GameObject> Attack;
+    public GameObject target;
 
     void Start()
     {
-        GameObject target = GameObject.FindGameObjectWithTag("Player");
+        target = GameObject.FindGameObjectWithTag("Player");
         listAttaque = target.GetComponent<ListAttaque>();
         listKatara = target.GetComponent<ListKatara>();
 
     }
     
+    /// <summary>
+    /// Search if we have the katara or attack name
+    /// if its true change its color to white
+    /// </summary>
     private void Update()
     {
-        if (listKatara == null || Katara == null)
-        {
-            Debug.LogError("listKatara ou Katara est null !");
-            return;
-        }
-
         foreach (GameObject katara in Katara)
         {
             if (katara == null) continue;

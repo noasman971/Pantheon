@@ -10,9 +10,11 @@ public class GameManager : MonoBehaviour
     {
         inventory.SetActive(false);
     }
+    
+    
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.CapsLock))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             
             inventory.SetActive(!inventory.activeSelf);

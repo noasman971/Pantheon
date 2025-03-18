@@ -149,12 +149,13 @@ MonoBehaviour:
   health: 400
   maxHealth: 400
   speed: 3
+  maxSpeed: 0
   attackCooldown: 2
   isDead: 0
   isAttacking: 0
   lastAttackTime: 0
-  damage_atk1: 70
-  damage_atk2: 100
+  damage_atk1: 100
+  damage_atk2: 130
   damage_special: 0
   atk1: 0
   atk2: 0
@@ -164,6 +165,7 @@ MonoBehaviour:
   gethit: 0
   dropRate: 5
   spriteReverse: 0
+  playerDetected: 0
 --- !u!50 &4025194363220000259
 Rigidbody2D:
   serializedVersion: 5

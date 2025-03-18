@@ -84,7 +84,7 @@ public class TwoAttack: EnemyBase
                     }
                     Destroy(gameObject);
                     SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
-                }
+                    PlayerPrefs.SetInt("Loaded", 1);                }
                 else
                 {
                     //anim.speed = 1;
@@ -95,7 +95,12 @@ public class TwoAttack: EnemyBase
         }
     }
        
-    protected new void Attack()
+       
+    /// <summary>
+    /// If the enemy health is superior to 80% do the attack1
+    /// Else do attack2
+    /// </summary>
+    protected override void Attack()
     {
         
         stats.isAttacking = true;

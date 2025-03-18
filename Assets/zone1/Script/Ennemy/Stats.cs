@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Stats : MonoBehaviour
 {
@@ -36,5 +37,13 @@ public class Stats : MonoBehaviour
     {
         maxHealth = health;
         maxSpeed = speed;
+    }
+
+    void Update()
+    {
+        if (isDead)
+        {
+            health = 0;
+        }
     }
 }

@@ -1,6 +1,11 @@
 fileFormatVersion: 2
-guid: 65cd8d0f0577e46439bb8eb24a2888c5
+<<<<<<<< HEAD:Assets/Prefabs/Dungeon Prefabs/Square.prefab.meta
+guid: a78f09202cfbe441ca0623cbd429fc3e
 PrefabImporter:
+========
+guid: 65c9a6be02b994ceeb4c8939c8d8fb5c
+DefaultImporter:
+>>>>>>>> de7b8c6 (Update Starter && new game/loadGame):Assets/zone1/Scene/Starter.unity.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

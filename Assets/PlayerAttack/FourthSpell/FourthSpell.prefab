@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
+  speedAfter: 0
+  parent: {fileID: 5889807823534899215}
 --- !u!61 &434753676057679323
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -304,3 +306,5 @@ MonoBehaviour:
   cost: 400
   target: {fileID: 0}
   playerStats: {fileID: 0}
+  speed: 0
+  flip: 1

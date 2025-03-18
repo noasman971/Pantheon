@@ -20,14 +20,16 @@ public class ListKatara : MonoBehaviour
 
 
     /// <summary>
-    /// Clears the katara list and empties the saved file.
+    /// Clears the katara list in memory and updates the saved file with an empty katara list.
     /// </summary>
     public void ClearList()
     {
         katara.Clear(); // Vide la liste en mémoire
-        File.WriteAllText(filePath, ""); // Écrit un fichier vide
-        Debug.Log("Fichier JSON vidé : " + filePath);
+        string json = JsonUtility.ToJson(new SaveData(katara)); // Convertit la liste vide en JSON
+        File.WriteAllText(filePath, json); // Écrit dans le fichier JSON
+        Debug.Log("Liste vidée et fichier mis à jour : " + filePath);
     }
+
     
     
     /// <summary>

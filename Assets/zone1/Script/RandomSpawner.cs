@@ -6,7 +6,10 @@ public class RandomSpawner : MonoBehaviour
     public GameObject [] ennemyPrefabs;
     int compteur = 0;
 
-    void Update()
+    /// <summary>
+    /// Spawn a random ennemy on a random position
+    /// </summary>
+    void Awake()
     {
         
         if (compteur ==0)

@@ -21,7 +21,15 @@ public class OneAttack : EnemyBase
 
     }
     
-    
+    /// <summary>
+    /// if the ennemy not dead:
+    /// - attack the player
+    /// - or get hit animation if he receive damage
+    /// - else run
+    /// if the ennemy is dead:
+    /// - press M to kill him
+    /// - press C to Capture him if we have the chance to
+    /// </summary>
     void Update()
     {
         if (!stats.isDead)
@@ -95,6 +103,9 @@ public class OneAttack : EnemyBase
                     }
                     Destroy(gameObject);
                     SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
+                    PlayerPrefs.SetInt("Loaded", 1);
+
+
                 }
                 else
                 {
@@ -106,7 +117,10 @@ public class OneAttack : EnemyBase
         }
     }
     
-    protected new void Attack()
+    /// <summary>
+    /// Attack the Player
+    /// </summary>
+    protected override void Attack()
     {
         
         stats.isAttacking = true;

@@ -80,7 +80,7 @@ public class ThreeAttack : EnemyBase
                     }
                     Destroy(gameObject);
                     SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
-                }
+                    PlayerPrefs.SetInt("Loaded", 1);                }
                 else
                 {
                     //anim.speed = 1;

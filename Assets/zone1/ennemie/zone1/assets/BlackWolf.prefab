@@ -298,7 +298,7 @@ MonoBehaviour:
   isDead: 0
   isAttacking: 0
   lastAttackTime: 0
-  damage_atk1: 60
+  damage_atk1: 90
   damage_atk2: 0
   damage_special: 0
   atk1: 0
@@ -309,6 +309,7 @@ MonoBehaviour:
   gethit: 0
   dropRate: 5
   spriteReverse: 0
+  playerDetected: 0
 --- !u!60 &6508224801163122377
 PolygonCollider2D:
   m_ObjectHideFlags: 0
