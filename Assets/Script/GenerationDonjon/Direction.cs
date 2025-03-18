@@ -10,6 +10,14 @@ public class Direction : MonoBehaviour
         new Vector2Int(1, 0),
         new Vector2Int(-1, 0)
     };
+    
+    public List<Vector2Int> alldirection_corridors = new()
+    {
+        new Vector2Int(0, 1), new Vector2Int(0, 1), 
+        new Vector2Int(1, 0), new Vector2Int(1, 0), 
+        new Vector2Int(0, -1),
+        new Vector2Int(-1, 0)
+    };
 
     public List<Vector2Int> alldirection_diagonale = new()
     {

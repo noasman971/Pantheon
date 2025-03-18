@@ -53,6 +53,7 @@ public class CreateRoomsDonjon : MonoBehaviour
 
     public List<Vector2Int> alldirection_diagonale => dir.alldirection_diagonale;
     public List<Vector2Int> alldirection => dir.alldirection;
+    public List<Vector2Int> alldirection_corridors => dir.alldirection_corridors;
     
     //boolean activate 
     public ActivateFonctionnalite af;
@@ -63,6 +64,7 @@ public class CreateRoomsDonjon : MonoBehaviour
     
     public bool limiteco(Vector2Int startpos, Vector2Int newposition, int limit)
     {
+        if (limit <= 0) return true; // Si la limite est négative ou zéro, pas de restriction
         return Mathf.Abs(newposition.x - startpos.x) <= limit && Mathf.Abs(newposition.y - startpos.y) <= limit;
     }
 
@@ -79,24 +81,26 @@ public class CreateRoomsDonjon : MonoBehaviour
             new_position += result;
 
             // Si la génération de la salle est activée (et pas encore au-delà de la limite)
-            if (ActivateSquareRooms)
-            {
-                // Vérifie que la nouvelle position est dans les limites et qu'elle n'est pas déjà visitée
-                if (limiteco(start_position, new_position, distance_walk / 2) && !walker.Contains(new_position))
-                {
-                    walker.Add(new_position);
-                }
-                else
-                {
-                    // Si la position dépasse la limite, on ne l'ajoute pas et on continue
-                    new_position -= result;
-                }
-            }
-            else
-            {
-                // Si pas de limites, on ajoute toutes les nouvelles positions
+            // if (ActivateSquareRooms)
+            // {
+            //     Vérifie que la nouvelle position est dans les limites et qu'elle n'est pas déjà visitée
+            //     if (limiteco(start_position, new_position, distance_walk / 2) && !walker.Contains(new_position))
+            //     {
+            //         walker.Add(new_position);
+            //         Debug.Log($"Added to walker: {new_position}");
+            //     }
+            //     else
+            //     {
+            //         Si la position dépasse la limite, on ne l'ajoute pas et on continue
+            //         new_position -= result;
+            //     }
+            // }
+            // else
+            // {
+            //     Si pas de limites, on ajoute toutes les nouvelles positions
                 walker.Add(new_position);
-            }
+                
+            // }
         }
 
         return walker;
@@ -173,7 +177,7 @@ public class CreateRoomsDonjon : MonoBehaviour
     {
         for (var i = 0; i < nbrcorridors; i++)
         {
-            var direction = alldirection[Random.Range(0, alldirection.Count)];
+            var direction = alldirection_corridors[Random.Range(0, alldirection_corridors.Count)];
             corridors.Add(start_position_corridors);
             var current_position = start_position_corridors;
             for (var j = 0; j < corroridorlenght; j++)
