@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 5392481586089929975}
   - component: {fileID: 8768561852223224975}
   - component: {fileID: 7779216881754048316}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Gorgon
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
@@ -223,8 +223,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1869315837
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 4723107735738678597, guid: fec716de5a7f5654091dd545a04e0ac8,
     type: 3}
@@ -273,7 +273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 5392481586089929975}
-  attackDrop: {fileID: 0}
+  attackDrop: {fileID: 8326460198996364424, guid: af48306cb430e944986d3db2de155a80,
+    type: 3}
   listKatara: {fileID: 0}
   listAttaque: {fileID: 0}
 --- !u!114 &5392481586089929975
@@ -291,6 +292,7 @@ MonoBehaviour:
   health: 500
   maxHealth: 0
   speed: 5
+  maxSpeed: 0
   attackCooldown: 2
   isDead: 0
   isAttacking: 0
@@ -305,6 +307,8 @@ MonoBehaviour:
   canAttack: 0
   gethit: 0
   dropRate: 5
+  spriteReverse: 0
+  flipAttack: 0
 --- !u!50 &8768561852223224975
 Rigidbody2D:
   serializedVersion: 5
@@ -381,7 +385,7 @@ GameObject:
   - component: {fileID: 8530815636818180580}
   - component: {fileID: 9186446367669815628}
   - component: {fileID: 1768723689379402354}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SpecialZone
   m_TagString: Special
   m_Icon: {fileID: 0}

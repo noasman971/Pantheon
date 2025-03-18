@@ -1,0 +1,572 @@
+fileFormatVersion: 2
+guid: d7e0f440c25f9a1458ca22cd3cdecbdd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5293553715674123241
+    second: MinotaurPlayer_0
+  - first:
+      213: 3246264573049843960
+    second: MinotaurPlayer_1
+  - first:
+      213: -1257251855208202714
+    second: MinotaurPlayer_2
+  - first:
+      213: 5557988648495130023
+    second: MinotaurPlayer_3
+  - first:
+      213: -4216049078152548063
+    second: MinotaurPlayer_4
+  - first:
+      213: 529578737594097316
+    second: MinotaurPlayer_5
+  - first:
+      213: -948461887519706037
+    second: MinotaurPlayer_6
+  - first:
+      213: 6229703725886453449
+    second: MinotaurPlayer_7
+  - first:
+      213: 341178721564113441
+    second: MinotaurPlayer_8
+  - first:
+      213: 4446212870337642969
+    second: MinotaurPlayer_9
+  - first:
+      213: -1015206053780658600
+    second: MinotaurPlayer_10
+  - first:
+      213: -1268778150318646533
+    second: MinotaurPlayer_11
+  - first:
+      213: 677328856258609604
+    second: MinotaurPlayer_12
+  - first:
+      213: -5855428007105686843
+    second: MinotaurPlayer_13
+  - first:
+      213: -6097163189938960283
+    second: MinotaurPlayer_14
+  - first:
+      213: -5923625924138630190
+    second: MinotaurPlayer_15
+  - first:
+      213: -1775274850576936036
+    second: MinotaurPlayer_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 13
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MinotaurPlayer_0
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 309
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7147bc921f48986b0800000000000000
+      internalID: -5293553715674123241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_1
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 284
+        width: 53
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f032930e6c0d0d20800000000000000
+      internalID: 3246264573049843960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_2
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 284
+        width: 51
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62e3d1159185d8ee0800000000000000
+      internalID: -1257251855208202714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_3
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 284
+        width: 41
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a5a4337a31f12d40800000000000000
+      internalID: 5557988648495130023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_4
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 284
+        width: 39
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 121ba1573b59d75c0800000000000000
+      internalID: -4216049078152548063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_5
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 284
+        width: 39
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ae55e65e01795700800000000000000
+      internalID: 529578737594097316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_6
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 284
+        width: 35
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b44346f30f266d2f0800000000000000
+      internalID: -948461887519706037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_7
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 288
+        width: 35
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c6b365488a547650800000000000000
+      internalID: 6229703725886453449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_8
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 86
+        width: 38
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12a30c75d3c1cb400800000000000000
+      internalID: 341178721564113441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_9
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 86
+        width: 39
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d1ce3c6c0f14bd30800000000000000
+      internalID: 4446212870337642969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_10
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 86
+        width: 38
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 856e39e097349e1f0800000000000000
+      internalID: -1015206053780658600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_11
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 86
+        width: 48
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfada7b9ef4646ee0800000000000000
+      internalID: -1268778150318646533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_12
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 86
+        width: 34
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c18a61910b566900800000000000000
+      internalID: 677328856258609604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_13
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 82
+        width: 52
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c2979c30475dbea0800000000000000
+      internalID: -5855428007105686843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_14
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 83
+        width: 39
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 568c9160266826ba0800000000000000
+      internalID: -6097163189938960283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_15
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 83
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d30c615b9d0bcda0800000000000000
+      internalID: -5923625924138630190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotaurPlayer_16
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 83
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c935da0ede4fc57e0800000000000000
+      internalID: -1775274850576936036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: fe0bba1c8fc409a4e99b183a2e16c206
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      MinotaurPlayer_0: -5293553715674123241
+      MinotaurPlayer_1: 3246264573049843960
+      MinotaurPlayer_10: -1015206053780658600
+      MinotaurPlayer_11: -1268778150318646533
+      MinotaurPlayer_12: 677328856258609604
+      MinotaurPlayer_13: -5855428007105686843
+      MinotaurPlayer_14: -6097163189938960283
+      MinotaurPlayer_15: -5923625924138630190
+      MinotaurPlayer_16: -1775274850576936036
+      MinotaurPlayer_2: -1257251855208202714
+      MinotaurPlayer_3: 5557988648495130023
+      MinotaurPlayer_4: -4216049078152548063
+      MinotaurPlayer_5: 529578737594097316
+      MinotaurPlayer_6: -948461887519706037
+      MinotaurPlayer_7: 6229703725886453449
+      MinotaurPlayer_8: 341178721564113441
+      MinotaurPlayer_9: 4446212870337642969
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
