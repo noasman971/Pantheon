@@ -8,6 +8,10 @@ public class Hitbox : MonoBehaviour
     public float speedAfter = 0;
     Stats stats;
 
+    
+    /// <summary>
+    /// Use stamina when the attack is used
+    /// </summary>
     void Start()
     {
         playerStamina = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStamina>();
@@ -18,7 +22,10 @@ public class Hitbox : MonoBehaviour
 
 
 
-
+    /// <summary>
+    /// Handles collision with an enemy. It ignores collisions between the player and attacks layers,
+    /// and applies damage to the enemy when colliding.
+    /// </summary>
     void OnCollisionEnter2D(Collision2D collision)
     {
         int playerLayer = LayerMask.NameToLayer("Player");
@@ -28,6 +35,8 @@ public class Hitbox : MonoBehaviour
         if (collision.gameObject.tag == "Ennemy")
         {
             Stats stats = collision.gameObject.GetComponent<Stats>();
+            stats.isAttacking = false;
+
             stats.gethit = true;
             stats.health -= damage;
 
@@ -37,6 +46,11 @@ public class Hitbox : MonoBehaviour
         }
     }
 
+    
+    /// <summary>
+    /// Handles trigger collision with an enemy. It applies damage to the enemy, changes its speed,
+    /// and disables its attacking state when the player collides with it.
+    /// </summary>
     void OnTriggerEnter2D(Collider2D collision)
     {
 

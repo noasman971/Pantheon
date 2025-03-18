@@ -33,7 +33,7 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-       blankItem = inventoryDisplay.transform.GetChild(0).transform.Find("icon").GetComponent<Image>().sprite;
+        blankItem = inventoryDisplay.transform.GetChild(0).transform.Find("icon").GetComponent<Image>().sprite;
     }
 
     public void LoadInventory()

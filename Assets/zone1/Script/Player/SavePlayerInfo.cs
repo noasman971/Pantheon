@@ -5,7 +5,9 @@ public class SavePlayerInfo : MonoBehaviour
 {
     
     
-    
+    /// <summary>
+    /// Loads the player's position from PlayerPrefs and sets it when the scene is not "Fight".
+    /// </summary>
     void Start()
     {
         if (SceneManager.GetActiveScene().name != "Fight")
@@ -15,10 +17,16 @@ public class SavePlayerInfo : MonoBehaviour
             float currentZ = PlayerPrefs.GetFloat("positionZ", transform.position.z);
             transform.position = new Vector3(currentX, currentY, currentZ);
         }
+        else
+        {
+            transform.position = new Vector3(-21f, -16f, 0);
+        }
 
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Saves the player's position and the current scene name to PlayerPrefs each frame.
+    /// </summary>
     void Update()
     {
         if (SceneManager.GetActiveScene().name != "Fight")

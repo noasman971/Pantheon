@@ -16,6 +16,9 @@ public class PlayerAttack : MonoBehaviour
         HaveAttack();
     }
 
+    /// <summary>
+    /// Checks which attacks the player has and adds them to the 'myAttacks' list.
+    /// </summary>
     void HaveAttack()
     {
         if (listAttaque.attack != null){
@@ -33,6 +36,10 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// It checks the player's available attacks and allows the player to use them
+    /// by pressing the corresponding keys (Y, U, I, J, K, L).
+    /// </summary>
     void Spell()
     {
         if (myAttacks.Count > 0 && myAttacks[0] != null)
@@ -42,7 +49,6 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Y))
             {
                 attackScript.Attack(this.gameObject);
-                playerStats.isAttacking = true;
             }
         }
 
@@ -53,7 +59,6 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.U))
             {
                 attackScript.Attack(this.gameObject);
-                playerStats.isAttacking = true;
             }
         }
         
@@ -64,7 +69,6 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.I))
             {
                 attackScript.Attack(this.gameObject);
-                playerStats.isAttacking = true;
             }
         }
         
@@ -75,7 +79,6 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.J))
             {
                 attackScript.Attack(this.gameObject);
-                playerStats.isAttacking = true;
             }
         }
         
@@ -86,7 +89,6 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.K))
             {
                 attackScript.Attack(this.gameObject);
-                playerStats.isAttacking = true;
             }
         }
         
@@ -97,7 +99,6 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.L))
             {
                 attackScript.Attack(this.gameObject);
-                playerStats.isAttacking = true;
             }
         }
     }
@@ -111,39 +112,5 @@ public class PlayerAttack : MonoBehaviour
     }
 
 
-    /*
-    private void Spell1()
-    {
-        if(Input.GetKeyDown(KeyCode.Y)){
-            playerStats.isAttacking = true;
-            GameObject newSpell = Instantiate(firstspell, transform.position, transform.rotation);
-            SpriteRenderer spell = newSpell.GetComponent<SpriteRenderer>();
-            
-            spell.flipX = dir.x < 0;
-            if (dir.y < 0)
-            {
-                spell.transform.Rotate(0, 0, -90);
-            }
-
-            if (dir.y>0)
-            {
-                spell.transform.Rotate(0, 0, 90);
-
-            }
-        }
-    }
-
-    
-    private void Spell2()
-    {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            playerStats.isAttacking = true;
-            GameObject newSpell = Instantiate(secondspell, transform.position, transform.rotation);
-            Spell2 spell = newSpell.GetComponent<Spell2>();
-            spell.regenHealth();
-            
-        }
-    }
-    */
+ 
 }

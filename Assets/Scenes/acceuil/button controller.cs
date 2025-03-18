@@ -7,8 +7,15 @@ public class buttoncontroller : MonoBehaviour
     public GameObject newGameButton;
     public GameObject loadButton;
 
+    public GameObject player;
+    public ListKatara listKatara;
+    public ListAttaque listAttaque;
+
     void Start()
     {
+        
+        listAttaque = player.GetComponent<ListAttaque>();
+        listKatara = player.GetComponent<ListKatara>();
         newGameButton.SetActive(false);
         loadButton.SetActive(false);
 
@@ -41,8 +48,20 @@ public class buttoncontroller : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene("FirstZone");
-        Debug.Log("Start Game");
+        listAttaque.ClearList();
+        listKatara.ClearList();
+        PlayerPrefs.SetFloat("positionX",  -0.34f);
+        PlayerPrefs.SetFloat("positionY",  -1.04f);
+        PlayerPrefs.SetFloat("positionZ",  0);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("debut map");
+        
+    }
+
+
+    public void LoadGame()
+    {
+        SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
     }
 
 

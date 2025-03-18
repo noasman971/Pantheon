@@ -6,7 +6,7 @@ public class backbutton : MonoBehaviour
 
 
     public void buttonback() {
-        SceneManager.LoadScene("Badis");
+        SceneManager.LoadScene("Menu");
         Debug.Log("back Button Press");
         
     }
