@@ -35,6 +35,7 @@ public class PlayerStamina : MonoBehaviour
     public void Usestamina(float stamina)
     
     {
+        // si la stamina du joueur est sup aou egal a 0 alors je lui retire la stamina utilisé et je met a jour la stamina bar
         if(playerStats.currentstamina >= 0)
         {
             playerStats.currentstamina -= stamina;
@@ -49,21 +50,26 @@ public class PlayerStamina : MonoBehaviour
     /// Regenerate the stamina to his maximum
     /// </summary>
     /// <param name="regenStamina">The amount of stamina to add from the player's current stamina.</param>
+   
+    
     void RegenStamina(float regenStamina)
     {
+        //si jeu en pause alors pas de regen
         if (paused)
         {
             return;
         }
         else
         {
-            if(playerStats.currentstamina <= playerStats.maxstamina)
+            // si la stamina actuel est inferieur a la stamina max  alors on ajoute le nombre de stamina en argument 
+            if(playerStats.currentstamina < playerStats.maxstamina)
             {
                 playerStats.currentstamina += regenStamina;
+                //mise a jour de la barre de stamina 
                 staminaBar.SetStamina(playerStats.currentstamina);
             
             }
-
+            // si la stamina depasse la stamina max alors la stamina est egal a la stamina max 
             if (playerStats.currentstamina > playerStats.maxstamina)
             {
                 playerStats.currentstamina = playerStats.maxstamina;

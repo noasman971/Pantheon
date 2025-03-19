@@ -23,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     void Update()
     {   
+        // a chque frame sauvgarde la vie actuelle du joueur (le currenthealth est la clef de playerpref et que playerStats est la valeur a la quelle on veut mettre cette clef )
         PlayerPrefs.SetFloat("currenthealth", playerStats.currenthealth);
         PlayerPrefs.Save(); 
 

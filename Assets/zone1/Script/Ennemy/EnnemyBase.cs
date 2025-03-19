@@ -65,11 +65,15 @@ public class EnemyBase : MonoBehaviour
 
             if (stats.canAttack && Time.time >= stats.lastAttackTime + stats.attackCooldown)
             {
+                stats.isAttacking = false;
+                stats.gethit = false;
                 Attack();
             }
             Vector2 direction = (target.position - transform.position).normalized;
             if (stats.gethit)
             {
+                stats.isAttacking = false;
+
                 anim.Play("Hit");
             }
             else
@@ -133,7 +137,7 @@ public class EnemyBase : MonoBehaviour
                     }
                     else
                     {
-                        //anim.speed = 1;
+                        anim.speed = 1;
 
                         Debug.Log("false capture");
                     }
@@ -228,17 +232,9 @@ public class EnemyBase : MonoBehaviour
     /// </summary>
     public void EndDeathAnimation()
     {
-        
-        if (SceneManager.GetActiveScene().name != "Mael")
-        {
-            SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
-            PlayerPrefs.SetInt("Loaded", 1);
-
-        }
-        else
-        {
-            anim.speed = 0;
-        }
+        anim.speed = 0;       
+        SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
+        PlayerPrefs.SetInt("Loaded", 1);
 
     }
 

@@ -147,16 +147,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508d69daba056724ea7051c642fe3cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 400
-  maxHealth: 400
-  speed: 3
+  health: 1500
+  maxHealth: 0
+  speed: 5
   maxSpeed: 0
-  attackCooldown: 2
+  attackCooldown: 1.2
   isDead: 0
   isAttacking: 0
   lastAttackTime: 0
   damage_atk1: 100
-  damage_atk2: 130
+  damage_atk2: 120
   damage_special: 0
   atk1: 0
   atk2: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   canSpecial: 1
   canAttack: 0
   gethit: 0
-  dropRate: 5
+  dropRate: 4
   spriteReverse: 1
   playerDetected: 0
 --- !u!50 &4025194363220000259

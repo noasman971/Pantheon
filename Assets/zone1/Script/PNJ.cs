@@ -22,7 +22,16 @@ public class PNJ : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && canDial)
+        if (!canDial)
+        {
+            // Fin du dialogue
+            isOndial = false;
+            index = 0;
+            manager.textDisplay.text = ""; 
+            manager.nameDisplay.text = ""; 
+            manager.DialogueHolder.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.T) && canDial)
         {
             StartDialogue();
 

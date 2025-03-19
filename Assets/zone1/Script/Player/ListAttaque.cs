@@ -44,9 +44,9 @@ public class ListAttaque : MonoBehaviour
     /// </summary>
     public void ClearList()
     {
-        attack.Clear(); // Vide la liste en mémoire
-        string json = JsonUtility.ToJson(new SaveData(attack)); // Convertit la liste vide en JSON
-        File.WriteAllText(filePath, json); // Écrit dans le fichier JSON
+        attack.Clear(); 
+        string json = JsonUtility.ToJson(new SaveData(attack));
+        File.WriteAllText(filePath, json); 
         Debug.Log("Liste vidée et fichier mis à jour : " + filePath);
     }
 

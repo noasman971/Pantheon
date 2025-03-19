@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/zone1/Scene/Starter.unity
     guid: 65c9a6be02b994ceeb4c8939c8d8fb5c
+  - enabled: 1
+    path: Assets/Scenes/Mael.unity
+    guid: 954a1e1d0de85d546af09f4abb70a8c6
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100,
       type: 3}
