@@ -15,6 +15,11 @@ public class AllObject : MonoBehaviour
         echelle,
         torche,
         tengu,
+        bigposition,
+        cle,
+        coin,
+        os,
+        potion,
         satyr,
         kitsune,
         test;

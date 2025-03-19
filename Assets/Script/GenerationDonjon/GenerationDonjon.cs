@@ -452,9 +452,9 @@ public class GenerationDonjon : MonoBehaviour
             List<(int,int)> interval= po.interval;
             
             po.placeobjects("caisse", interval[0].Item1,interval[0].Item2, 1, 2,ActivateBorder: false, ActivateAround:false);
-            po.placeobjects("caillou",interval[0].Item1,interval[0].Item2, 2, 3,ActivateBorder: false, ActivateAround:false);
+            
             po.placeobjects("torche", interval[1].Item1,interval[1].Item2, 2, 3,  ActivateBorder: true, ActivateAround:false);
-            po.placeobjects("caillou", interval[1].Item1,interval[1].Item2, 8, 10,  ActivateBorder: false, ActivateAround:false);
+            po.placeobjects("caillou", interval[0].Item1,interval[1].Item2, 4, 8,  ActivateBorder: false, ActivateAround:false);
             po.placeobjects("wolf", interval[1].Item1,interval[1].Item2, 2,  ActivateBorder: false, ActivateAround:false);
             po.placeobjects("pique", interval[2].Item1,interval[2].Item2, 8, 10,   ActivateBorder: false, ActivateAround:false);
             
@@ -463,8 +463,11 @@ public class GenerationDonjon : MonoBehaviour
             po.placeobjects("tengu", interval[2].Item1+interinter+2,interval[2].Item1+interinter*2+1, 1,   ActivateBorder: false, ActivateAround:false);
             po.placeobjects("cat", interval[2].Item1+interinter*2+2,interval[2].Item2, 1,   ActivateBorder: false, ActivateAround:false);
             
-            po.placeobjects("cat", interval[2].Item1+interinter*2+2,interval[2].Item2, 1,   ActivateBorder: false, ActivateAround:false);
-            
+            po.placeobjects("os", interval[3].Item1,interval[3].Item2, 2, 3,   ActivateBorder: false, ActivateAround:false);
+            po.placeobjects("coin", interval[3].Item1,interval[3].Item2, 3, 5,   ActivateBorder: false, ActivateAround:false);
+            po.placeobjects("bigpotion", interval[3].Item1,interval[3].Item2, 1, 2,   ActivateBorder: false, ActivateAround:false);
+            po.placeobjects("potion", interval[3].Item1,interval[3].Item2, 1, 3,   ActivateBorder: false, ActivateAround:false);
+            po.placeobjects("cle", interval[3].Item1,interval[3].Item2, 1,   ActivateBorder: false, ActivateAround:false);
             
             if (po.maxAttempts == 0)
             {
@@ -519,14 +522,25 @@ public class GenerationDonjon : MonoBehaviour
                         {
                             objet = at.torche;
                         }
-                        else if (name_object == "pilier")
+                        else if (name_object == "os")
                         {
-                            objet = at.pilier;
-                            Vector3 worldPosition = sol.CellToWorld((Vector3Int)allposobject[i]);
-                            GameObject newObject = Instantiate(objet, worldPosition, Quaternion.identity);
-                            newObject.name = $"{name_object}_{i}";
-                            newObject.transform.SetParent(at.parentFolder.transform);
-                            spawnedobjects.Add(newObject);
+                            objet = at.os;
+                        }
+                        else if (name_object == "coin")
+                        {
+                            objet = at.coin;
+                        }
+                        else if (name_object == "potion")
+                        {
+                            objet = at.potion;
+                        }
+                        else if (name_object == "bigpotion")
+                        {
+                            objet = at.bigposition;
+                        }
+                        else if (name_object == "cle")
+                        {
+                            objet = at.cle;
                         }
                         else if (name_object == "caisse")
                         {
@@ -538,7 +552,7 @@ public class GenerationDonjon : MonoBehaviour
                             spawnedobjects.Add(newObject);
                         }
 
-                        if (name_object != "caisse" || name_object != "pilier" || name_object != "cat")
+                        if (name_object != "caisse")
                         {
                             Vector3 worldPosition = sol.CellToWorld((Vector3Int)allposobject[i]) + new Vector3(0.5f, 0.5f, 0);
                             GameObject newObject = Instantiate(objet, worldPosition, Quaternion.identity);

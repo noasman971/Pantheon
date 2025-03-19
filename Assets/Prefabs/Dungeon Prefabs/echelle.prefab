@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a2fcce28d6d34c49af151b22dca0041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneName: MapBossFinal
 --- !u!61 &989701107104843073
 BoxCollider2D:
   m_ObjectHideFlags: 0
