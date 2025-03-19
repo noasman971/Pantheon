@@ -53,7 +53,7 @@ public class Spell1 : MonoBehaviour, Attackable
     public void Attack(GameObject playerRef)
     {
         PlayerStats playerStats = playerRef.GetComponent<PlayerStats>();
-        if (playerStats.currentstamina > cost && SceneManager.GetActiveScene().name == "fight")
+        if (playerStats.currentstamina > cost && (SceneManager.GetActiveScene().name == "fight" || SceneManager.GetActiveScene().name == "Mael"))
         {
             playerStats.isAttacking = true;
             GameObject newSpell = Instantiate(this.gameObject, playerRef.transform.position, Quaternion.identity);

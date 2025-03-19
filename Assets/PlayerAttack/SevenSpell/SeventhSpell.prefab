@@ -103,10 +103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7da66a8b2c534c589a81a589e7ed5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 200
   target: {fileID: 0}
   playerStats: {fileID: 0}
-  speed: 0
   flip: 0
 --- !u!95 &1360686912592893979
 Animator:
@@ -259,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bfe1dc834d41ea48abfa9a3954ece40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
+  damage: 20
   speedAfter: 0
   parent: {fileID: 2605139533017036622}
 --- !u!61 &1380762781182983880

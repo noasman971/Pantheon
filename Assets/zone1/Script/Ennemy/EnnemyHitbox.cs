@@ -83,6 +83,7 @@ public class EnnemyHitbox : MonoBehaviour
     {
         if (gameObject.name == "SpecialZone")
         {
+            stats.isAttacking = false;
             stats.canAttack = false;
 
         }

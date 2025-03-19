@@ -452,7 +452,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 2500
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -479,16 +479,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508d69daba056724ea7051c642fe3cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 500
+  health: 3000
   maxHealth: 0
-  speed: 1.5
+  speed: 4
   maxSpeed: 0
-  attackCooldown: 2
+  attackCooldown: 1.5
   isDead: 0
   isAttacking: 0
   lastAttackTime: 0
-  damage_atk1: 400
-  damage_atk2: 800
+  damage_atk1: 120
+  damage_atk2: 150
   damage_special: 0
   atk1: 0
   atk2: 0
@@ -496,8 +496,9 @@ MonoBehaviour:
   canSpecial: 1
   canAttack: 0
   gethit: 0
-  dropRate: 300
-  spriteReverse: 0
+  dropRate: 7
+  spriteReverse: 1
+  playerDetected: 0
 --- !u!114 &255248109462546491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,7 +512,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 5441747692795316409}
-  attackDrop: {fileID: 2113842407584498841, guid: 85902afc2f5ce2c47b16d96b8de17d19,
-    type: 3}
+  target: {fileID: 0}
   listKatara: {fileID: 0}
   listAttaque: {fileID: 0}
+  attackDrop: {fileID: 2113842407584498841, guid: 85902afc2f5ce2c47b16d96b8de17d19,
+    type: 3}
