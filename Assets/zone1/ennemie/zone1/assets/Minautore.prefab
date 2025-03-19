@@ -497,7 +497,8 @@ MonoBehaviour:
   canAttack: 0
   gethit: 0
   dropRate: 300
-  spriteReverse: 0
+  spriteReverse: 1
+  playerDetected: 0
 --- !u!114 &255248109462546491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,7 +512,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 5441747692795316409}
-  attackDrop: {fileID: 2113842407584498841, guid: 85902afc2f5ce2c47b16d96b8de17d19,
-    type: 3}
+  target: {fileID: 0}
   listKatara: {fileID: 0}
   listAttaque: {fileID: 0}
+  attackDrop: {fileID: 2113842407584498841, guid: 85902afc2f5ce2c47b16d96b8de17d19,
+    type: 3}
