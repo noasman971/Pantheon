@@ -15,7 +15,7 @@ public class ListKatara : MonoBehaviour
     private void Start()
     {
         filePath = Application.persistentDataPath + "/katara.json";
-        LoadList(); /
+        LoadList(); 
     }
 
 
