@@ -15,7 +15,7 @@ public class ListKatara : MonoBehaviour
     private void Start()
     {
         filePath = Application.persistentDataPath + "/katara.json";
-        LoadList(); // Charger la liste au lancement
+        LoadList(); /
     }
 
 
@@ -24,9 +24,9 @@ public class ListKatara : MonoBehaviour
     /// </summary>
     public void ClearList()
     {
-        katara.Clear(); // Vide la liste en mémoire
-        string json = JsonUtility.ToJson(new SaveData(katara)); // Convertit la liste vide en JSON
-        File.WriteAllText(filePath, json); // Écrit dans le fichier JSON
+        katara.Clear(); 
+        string json = JsonUtility.ToJson(new SaveData(katara));
+        File.WriteAllText(filePath, json); 
         Debug.Log("Liste vidée et fichier mis à jour : " + filePath);
     }
 
