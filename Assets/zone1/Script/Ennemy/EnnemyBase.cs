@@ -106,7 +106,7 @@ public class EnemyBase : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
             anim.Play("Dead");
-            if (SceneManager.GetActiveScene().name == "Mael")
+            if (SceneManager.GetActiveScene().name == "Dungeon")
             {
                 anim.speed = 1;
             }
@@ -232,9 +232,17 @@ public class EnemyBase : MonoBehaviour
     /// </summary>
     public void EndDeathAnimation()
     {
-        anim.speed = 0;       
-        SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
-        PlayerPrefs.SetInt("Loaded", 1);
+        anim.speed = 0;
+        if (SceneManager.GetActiveScene().name != "Dungeon")
+        {
+            SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
+            PlayerPrefs.SetInt("Loaded", 1);
+            
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
     }
 

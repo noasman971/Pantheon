@@ -282,106 +282,151 @@ public class PlaceObject : MonoBehaviour
                     }
                 }
             }
-            // else if (ActivateBorder)
-            // {
-            //     foreach (var (roomposstart, allroompos) in allposroomsneight)
-            //     {
-            //         if (roomposstart == pos)
-            //         {
-            //             int nbrobjectperrooms = Random.Range(nbrobjetmin, nbrobjetmax + 1);
-            //             int placedObjects = 0;
-            //             maxAttempts = 100000;
-            //             while (placedObjects < nbrobjectperrooms)
-            //             {
-            //                 int posrandom = Random.Range(0, allroompos.Count);
-            //                 Vector2Int findpos = allroompos[posrandom];
-            //                 bool canplaceobjet = true;
-            //                 dirobject.Clear();
-            //                 List<Vector2Int> choosedir = new List<Vector2Int>();
-            //
-            //                 if (objet == "caisse")
-            //                 {
-            //                     choosedir = alldirection_diagonale;
-            //                 }
-            //                 else if (objet == "wolf")
-            //                 {
-            //                     choosedir = dir.alldirection_wolf;
-            //                 }
-            //
-            //                 if (choosedir.Count != 0)
-            //                 {
-            //                     foreach (var dir in choosedir)
-            //                     {
-            //                         if (allobjet.Contains(findpos + dir))
-            //                         {
-            //                             canplaceobjet = false;
-            //                         }
-            //
-            //                         if (allcorridors.Contains(findpos + dir))
-            //                         {
-            //                             canplaceobjet = false;
-            //                         }
-            //
-            //                         if (!canplaceobjet)
-            //                         {
-            //                             break;
-            //                         }
-            //
-            //                         dirobject.Add(findpos + dir);
-            //                     }
-            //                 }
-            //
-            //                 if (allobjet.Contains(findpos))
-            //                 {
-            //                     canplaceobjet = false;
-            //                 }
-            //
-            //                 if (allcorridors.Contains(findpos))
-            //                 {
-            //                     canplaceobjet = false;
-            //                 }
-            //                 
-            //
-            //                 if (ActivateAround)
-            //                 {
-            //                     foreach (var dir in alldirection_diagonale)
-            //                     {
-            //                         if (allobjet.Contains(findpos + dir))
-            //                         {
-            //                             canplaceobjet = false;
-            //                             Debug.Log("f");
-            //                         }
-            //                         if (!canplaceobjet)
-            //                         {
-            //                             break;
-            //                         }
-            //
-            //                         dirobject.Add(findpos + dir);
-            //                     }
-            //                     
-            //                 }
-            //
-            //                 if (canplaceobjet)
-            //                 {
-            //                     if (choosedir.Count != 0)
-            //                     {
-            //                         allobjet.UnionWith(dirobject);
-            //                     }
-            //
-            //                     allobjet.Add(findpos);
-            //                     posobjects[objet].Add(findpos);
-            //                     placedObjects++;
-            //                 }
-            //
-            //                 maxAttempts--;
-            //                 if (maxAttempts == 0)
-            //                 {
-            //                     break;
-            //                 }
-            //             }
-            //         }
-            //     }
-            // }
+            else if (ActivateBorder)
+            {
+                foreach (var (roomposstart, allroompos) in allposroomsneight)
+                {
+                    if (roomposstart == pos)
+                    {
+                        int nbrobjectperrooms = Random.Range(nbrobjetmin, nbrobjetmax + 1);
+                        int placedObjects = 0;
+                        maxAttempts = 100000;
+                        while (placedObjects < nbrobjectperrooms)
+                        {
+                            int posrandom = Random.Range(0, allroompos.Count);
+                            Vector2Int findpos = allroompos[posrandom];
+                            bool canplaceobjet = true;
+                            dirobject.Clear();
+                            List<Vector2Int> choosedir = new List<Vector2Int>();
+
+                            if (objet == "caisse")
+                            {
+                                choosedir = new()
+                                {
+                                    new Vector2Int(0, 1),
+                                    new Vector2Int(0, -1),
+                                    new Vector2Int(1, 0),
+                                    new Vector2Int(-1, 0),
+                                    new Vector2Int(1, 1),
+                                    new Vector2Int(-1, -1),
+                                    new Vector2Int(1, -1),
+                                    new Vector2Int(-1, 1)
+                                };
+                            }
+                            else if (objet == "cat")
+                            {
+                                choosedir = new()
+                                {
+                                    new Vector2Int(0, 1),
+                                    new Vector2Int(1, 0),
+                                    new Vector2Int(0,-1),
+                                    
+                                };
+                            }
+                            else if (objet == "wolf")
+                            {
+                                choosedir = new()
+                                {
+                                    new Vector2Int(0, 1),
+                                    new Vector2Int(1, 0),
+                                    new Vector2Int(1, 1),
+                                    new Vector2Int(2, 1)
+                                };
+                            }
+                            else if (objet == "satyr")
+                            {
+                                choosedir = new()
+                                {
+                                    new Vector2Int(0, 1),
+                                    new Vector2Int(0, -1)
+                                };
+                            }
+                            else if (objet == "tengu")
+                            {
+                                choosedir = new()
+                                {
+                                    new Vector2Int(-1,0),
+                                    new Vector2Int(-1,1),
+                                    new Vector2Int(0,1),
+                                    new Vector2Int(0,-1),
+                                    new Vector2Int(1,0),
+                                };
+                            }
+                            
+                            
+                            foreach (var dir in choosedir)
+                            {
+                                if (allobjet.Contains(findpos + dir))
+                                {
+                                    canplaceobjet = false;
+                                }
+
+                                if (allcorridors.Contains(findpos + dir))
+                                {
+                                    canplaceobjet = false;
+                                }
+
+                                if (!canplaceobjet)
+                                {
+                                    break;
+                                }
+
+                                dirobject.Add(findpos + dir);
+                            }
+                            
+
+                            if (allobjet.Contains(findpos))
+                            {
+                                canplaceobjet = false;
+                            }
+
+                            if (allcorridors.Contains(findpos))
+                            {
+                                canplaceobjet = false;
+                            }
+                            
+
+                            if (ActivateAround)
+                            {
+                                foreach (var dir in alldirection_diagonale)
+                                {
+                                    if (allobjet.Contains(findpos + dir))
+                                    {
+                                        canplaceobjet = false;
+                                        Debug.Log("f");
+                                    }
+                                    if (!canplaceobjet)
+                                    {
+                                        break;
+                                    }
+
+                                    dirobject.Add(findpos + dir);
+                                }
+                                
+                            }
+
+                            if (canplaceobjet)
+                            {
+                                if (choosedir.Count != 0)
+                                {
+                                    allobjet.UnionWith(dirobject);
+                                }
+
+                                allobjet.Add(findpos);
+                                posobjects[objet].Add(findpos);
+                                placedObjects++;
+                            }
+
+                            maxAttempts--;
+                            if (maxAttempts == 0)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            
         }
     }
 }

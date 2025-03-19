@@ -346,99 +346,98 @@ public class GenerationDonjon : MonoBehaviour
                 
             }
             
-            if (ActivateStartRooms)
+            
+            // var colors = new[]
+            // {
+            //     new Color(0f, 1f, 0f),   // Vert pur
+            //     new Color(0.05f, 0.975f, 0f),
+            //     new Color(0.1f, 0.95f, 0f),
+            //     new Color(0.15f, 0.925f, 0f),
+            //     new Color(0.2f, 0.9f, 0f),
+            //     new Color(0.25f, 0.875f, 0f),
+            //     new Color(0.3f, 0.85f, 0f),
+            //     new Color(0.35f, 0.825f, 0f),
+            //     new Color(0.4f, 0.8f, 0f),
+            //     new Color(0.45f, 0.775f, 0f),
+            //     new Color(0.5f, 0.75f, 0f),
+            //     new Color(0.55f, 0.725f, 0f),
+            //     new Color(0.6f, 0.7f, 0f),
+            //     new Color(0.65f, 0.675f, 0f),
+            //     new Color(0.7f, 0.65f, 0f),
+            //     new Color(0.75f, 0.625f, 0f),
+            //     new Color(0.8f, 0.6f, 0f),
+            //     new Color(0.825f, 0.575f, 0f),
+            //     new Color(0.85f, 0.55f, 0f),
+            //     new Color(0.875f, 0.525f, 0f),
+            //     new Color(0.9f, 0.5f, 0f),
+            //     new Color(0.925f, 0.475f, 0f),
+            //     new Color(0.95f, 0.45f, 0f),
+            //     new Color(0.975f, 0.425f, 0f),
+            //     new Color(1f, 0.4f, 0f),   // Orange
+            //     new Color(1f, 0.375f, 0f),
+            //     new Color(1f, 0.35f, 0f),
+            //     new Color(1f, 0.325f, 0f),
+            //     new Color(1f, 0.3f, 0f),
+            //     new Color(1f, 0.275f, 0f),
+            //     new Color(1f, 0.25f, 0f),
+            //     new Color(1f, 0.225f, 0f),
+            //     new Color(1f, 0.2f, 0f),
+            //     new Color(1f, 0.175f, 0f),
+            //     new Color(1f, 0.15f, 0f),
+            //     new Color(1f, 0.125f, 0f),
+            //     new Color(1f, 0.1f, 0f),
+            //     new Color(1f, 0.05f, 0f),
+            //     new Color(1f, 0f, 0f)    // Rouge pur
+            // };
+            
+            var colors = new[]
             {
-                // var colors = new[]
-                // {
-                //     new Color(0f, 1f, 0f),   // Vert pur
-                //     new Color(0.05f, 0.975f, 0f),
-                //     new Color(0.1f, 0.95f, 0f),
-                //     new Color(0.15f, 0.925f, 0f),
-                //     new Color(0.2f, 0.9f, 0f),
-                //     new Color(0.25f, 0.875f, 0f),
-                //     new Color(0.3f, 0.85f, 0f),
-                //     new Color(0.35f, 0.825f, 0f),
-                //     new Color(0.4f, 0.8f, 0f),
-                //     new Color(0.45f, 0.775f, 0f),
-                //     new Color(0.5f, 0.75f, 0f),
-                //     new Color(0.55f, 0.725f, 0f),
-                //     new Color(0.6f, 0.7f, 0f),
-                //     new Color(0.65f, 0.675f, 0f),
-                //     new Color(0.7f, 0.65f, 0f),
-                //     new Color(0.75f, 0.625f, 0f),
-                //     new Color(0.8f, 0.6f, 0f),
-                //     new Color(0.825f, 0.575f, 0f),
-                //     new Color(0.85f, 0.55f, 0f),
-                //     new Color(0.875f, 0.525f, 0f),
-                //     new Color(0.9f, 0.5f, 0f),
-                //     new Color(0.925f, 0.475f, 0f),
-                //     new Color(0.95f, 0.45f, 0f),
-                //     new Color(0.975f, 0.425f, 0f),
-                //     new Color(1f, 0.4f, 0f),   // Orange
-                //     new Color(1f, 0.375f, 0f),
-                //     new Color(1f, 0.35f, 0f),
-                //     new Color(1f, 0.325f, 0f),
-                //     new Color(1f, 0.3f, 0f),
-                //     new Color(1f, 0.275f, 0f),
-                //     new Color(1f, 0.25f, 0f),
-                //     new Color(1f, 0.225f, 0f),
-                //     new Color(1f, 0.2f, 0f),
-                //     new Color(1f, 0.175f, 0f),
-                //     new Color(1f, 0.15f, 0f),
-                //     new Color(1f, 0.125f, 0f),
-                //     new Color(1f, 0.1f, 0f),
-                //     new Color(1f, 0.05f, 0f),
-                //     new Color(1f, 0f, 0f)    // Rouge pur
-                // };
-                
-                var colors = new[]
+                new Color(1f, 0f, 0f),   // Rouge
+                new Color(0f, 1f, 0f),   // Vert
+                new Color(0f, 0f, 1f),   // Bleu
+                new Color(1f, 1f, 0f),   // Jaune
+                new Color(1f, 0f, 1f),   // Magenta
+                new Color(0f, 1f, 1f),   // Cyan
+                new Color(1f, 0.5f, 0f), // Orange
+                new Color(0.5f, 0f, 1f), // Violet
+                new Color(0.5f, 1f, 0f), // Vert clair
+                new Color(1f, 0f, 0.5f), // Rose foncé
+                new Color(0f, 0.5f, 1f), // Bleu clair
+                new Color(0.5f, 1f, 1f), // Turquoise
+                new Color(1f, 0.5f, 0.5f), // Rouge clair
+                new Color(0.5f, 0.5f, 1f), // Bleu lavande
+                new Color(1f, 1f, 0.5f), // Jaune pastel
+                new Color(0.5f, 1f, 0.5f), // Vert pastel
+                new Color(1f, 0.75f, 0f), // Jaune orangé
+                new Color(0.75f, 0f, 1f), // Violet profond
+                new Color(0.25f, 0.25f, 0.25f), // Gris foncé
+                new Color(0.75f, 0.75f, 0.75f)  // Gris clair
+            };
+            
+            // Pour chaque salle enregistrée dans roomsorder, on crée une tuile colorée.
+            foreach (var (roomRank, roomPos) in ro.roomsorder)
+            {
+                // Si ce rang n'a pas encore de couleur attribuée, on lui en assigne une.
+                if (!colorMapping.ContainsKey(roomRank)) colorMapping[roomRank] = colors[roomRank % colors.Length];
+
+                if (ActivateStartRooms)
                 {
-                    new Color(1f, 0f, 0f),   // Rouge
-                    new Color(0f, 1f, 0f),   // Vert
-                    new Color(0f, 0f, 1f),   // Bleu
-                    new Color(1f, 1f, 0f),   // Jaune
-                    new Color(1f, 0f, 1f),   // Magenta
-                    new Color(0f, 1f, 1f),   // Cyan
-                    new Color(1f, 0.5f, 0f), // Orange
-                    new Color(0.5f, 0f, 1f), // Violet
-                    new Color(0.5f, 1f, 0f), // Vert clair
-                    new Color(1f, 0f, 0.5f), // Rose foncé
-                    new Color(0f, 0.5f, 1f), // Bleu clair
-                    new Color(0.5f, 1f, 1f), // Turquoise
-                    new Color(1f, 0.5f, 0.5f), // Rouge clair
-                    new Color(0.5f, 0.5f, 1f), // Bleu lavande
-                    new Color(1f, 1f, 0.5f), // Jaune pastel
-                    new Color(0.5f, 1f, 0.5f), // Vert pastel
-                    new Color(1f, 0.75f, 0f), // Jaune orangé
-                    new Color(0.75f, 0f, 1f), // Violet profond
-                    new Color(0.25f, 0.25f, 0.25f), // Gris foncé
-                    new Color(0.75f, 0.75f, 0.75f)  // Gris clair
-                };
-            
-                
-                // Dictionnaire pour associer un rang de salle à une couleur.
-                
-            
-                // Pour chaque salle enregistrée dans roomsorder, on crée une tuile colorée.
-                foreach (var (roomRank, roomPos) in ro.roomsorder)
-                {
-                    // Si ce rang n'a pas encore de couleur attribuée, on lui en assigne une.
-                    if (!colorMapping.ContainsKey(roomRank)) colorMapping[roomRank] = colors[roomRank % colors.Length];
-            
+
                     // Conversion de la position du monde en position de tile.
                     var tilePosition = sol.WorldToCell((Vector3Int)roomPos);
-            
+
                     // Création d'une nouvelle tuile en se basant sur tile_test2
                     var coloredTile = ScriptableObject.CreateInstance<Tile>();
                     var baseTile = tile_test2 as Tile;
                     if (baseTile != null) coloredTile.sprite = baseTile.sprite;
                     // Appliquer la couleur déterminée par le rang
                     coloredTile.color = colorMapping[roomRank];
-            
+
                     // Placer la tuile colorée dans le tilemap du sol
                     sol.SetTile(tilePosition, coloredTile);
                 }
             }
+            
             
             if (ActivateDelRooms)
             {
@@ -454,26 +453,17 @@ public class GenerationDonjon : MonoBehaviour
             
             po.placeobjects("caisse", interval[0].Item1,interval[0].Item2, 1, 2,ActivateBorder: false, ActivateAround:false);
             po.placeobjects("caillou",interval[0].Item1,interval[0].Item2, 2, 3,ActivateBorder: false, ActivateAround:false);
-            po.placeobjects("pilier", interval[1].Item1,interval[1].Item2, 2,  ActivateBorder: true, ActivateAround:false);
+            po.placeobjects("torche", interval[1].Item1,interval[1].Item2, 2, 3,  ActivateBorder: true, ActivateAround:false);
             po.placeobjects("caillou", interval[1].Item1,interval[1].Item2, 8, 10,  ActivateBorder: false, ActivateAround:false);
             po.placeobjects("wolf", interval[1].Item1,interval[1].Item2, 2,  ActivateBorder: false, ActivateAround:false);
-            po.placeobjects("pique", interval[2].Item1,interval[2].Item2, 10,   ActivateBorder: false, ActivateAround:false);
+            po.placeobjects("pique", interval[2].Item1,interval[2].Item2, 8, 10,   ActivateBorder: false, ActivateAround:false);
             
             int interinter = (interval[2].Item2 - interval[2].Item1)/3;
             po.placeobjects("satyr", interval[2].Item1,interval[2].Item1+interinter+1, 1,   ActivateBorder: false, ActivateAround:false);
             po.placeobjects("tengu", interval[2].Item1+interinter+2,interval[2].Item1+interinter*2+1, 1,   ActivateBorder: false, ActivateAround:false);
             po.placeobjects("cat", interval[2].Item1+interinter*2+2,interval[2].Item2, 1,   ActivateBorder: false, ActivateAround:false);
             
-            // string[] enemies = { "tengu", "cat", "satyr" };
-            // System.Random random = new System.Random();
-            //
-            // for (int i = interval[2].Item1; i < interval[2].Item2; i++)
-            // {
-            //     int inter = i;
-            //     string enemy = enemies[random.Next(enemies.Length)];
-            //     po.placeobjects(enemy, inter, inter+1, 1, ActivateBorder: false, ActivateAround: false);
-            // }
-
+            po.placeobjects("cat", interval[2].Item1+interinter*2+2,interval[2].Item2, 1,   ActivateBorder: false, ActivateAround:false);
             
             
             if (po.maxAttempts == 0)
@@ -525,6 +515,10 @@ public class GenerationDonjon : MonoBehaviour
                         {
                             objet = at.kitsune;
                         }
+                        else if (name_object == "torche")
+                        {
+                            objet = at.torche;
+                        }
                         else if (name_object == "pilier")
                         {
                             objet = at.pilier;
@@ -573,14 +567,14 @@ public class GenerationDonjon : MonoBehaviour
                 
             }
 
-            foreach (var pos in po.allobjet)
-            {
-                Vector3 worldPosition = sol.CellToWorld((Vector3Int)pos);
-                GameObject newObject = Instantiate(at.test, worldPosition, Quaternion.identity);
-                newObject.name = "test";
-                newObject.transform.SetParent(at.parentFolder.transform);
-                spawnedobjects.Add(newObject);
-            }
+            // foreach (var pos in po.allobjet)
+            // {
+            //     Vector3 worldPosition = sol.CellToWorld((Vector3Int)pos);
+            //     GameObject newObject = Instantiate(at.test, worldPosition, Quaternion.identity);
+            //     newObject.name = "test";
+            //     newObject.transform.SetParent(at.parentFolder.transform);
+            //     spawnedobjects.Add(newObject);
+            // }
             
             GameObject[] allObjects = FindObjectsOfType<GameObject>();
 
