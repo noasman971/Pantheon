@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 public class ChangeZone : MonoBehaviour
 {
     public string sceneName;
-
     
-
     /// <summary>
     /// Load the scene if we enter in colision
     /// </summary>
