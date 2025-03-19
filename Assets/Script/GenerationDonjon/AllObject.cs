@@ -13,5 +13,8 @@ public class AllObject : MonoBehaviour
         caisse,
         wolf,
         echelle,
+        tengu,
+        satyr,
+        kitsune,
         test;
 }
