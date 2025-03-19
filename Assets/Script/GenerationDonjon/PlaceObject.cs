@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -28,6 +29,8 @@ public class PlaceObject : MonoBehaviour
 
     public HashSet<Vector2Int> allobjet = new HashSet<Vector2Int>() ;
     public HashSet<Vector2Int> dirobject = new HashSet<Vector2Int>();
+
+    public GenerationDonjon gd;
     
     public List<Vector2Int> totalsroomsminmax(int min, int max)
     {
@@ -48,54 +51,75 @@ public class PlaceObject : MonoBehaviour
 
     public void intervalobject()
     {
-        int total = 0;
-        foreach (var (roomcompteur, roomposstart) in roomsorder)
+        var colors = new[]
         {
-            if (total < roomcompteur)
-            {
-                total = roomcompteur;
-            }
+            new Color(1f, 0f, 0f),   // Rouge
+            new Color(0f, 1f, 0f),   // Vert
+            new Color(0f, 0f, 1f),   // Bleu
+            new Color(1f, 1f, 0f),   // Jaune
+            new Color(1f, 0f, 1f),   // Magenta
+            new Color(0f, 1f, 1f),   // Cyan
+            new Color(1f, 0.5f, 0f), // Orange
+            new Color(0.5f, 0f, 1f), // Violet
+            new Color(0.5f, 1f, 0f), // Vert clair
+            new Color(1f, 0f, 0.5f), // Rose foncé
+            new Color(0f, 0.5f, 1f), // Bleu clair
+            new Color(0.5f, 1f, 1f), // Turquoise
+            new Color(1f, 0.5f, 0.5f), // Rouge clair
+            new Color(0.5f, 0.5f, 1f), // Bleu lavande
+            new Color(1f, 1f, 0.5f), // Jaune pastel
+            new Color(0.5f, 1f, 0.5f), // Vert pastel
+            new Color(1f, 0.75f, 0f), // Jaune orangé
+            new Color(0.75f, 0f, 1f), // Violet profond
+            new Color(0.25f, 0.25f, 0.25f), // Gris foncé
+            new Color(0.75f, 0.75f, 0.75f)  // Gris clair
+        };
+    
+        var colorMapping = new Dictionary<int, Color>();
+        
+        foreach (var (roomRank, roomPos) in ro.roomsorder)
+        {
+            if (!colorMapping.ContainsKey(roomRank)) colorMapping[roomRank] = colors[roomRank % colors.Length];
+            
         }
+
+        int total = colorMapping.Count;
+        
+    
         int totalzones = 2;
-        int fixedfirstzonesize = 3;
-        List<float> factorzone = new List<float> { 1f, 1.5f};
-        float totalfactorzone = 0;
-        foreach (var factor in factorzone)
-        {
-            totalfactorzone += factor;
-        }
+        int fixedfirstzonesize = 2;
+        List<float> factorzone = new List<float> { 1f, 1.5f };
+
         int resterooms = total - fixedfirstzonesize - 1;
         
-        List<int> allsize = new List<int>();
-        
-        allsize.Add((int)(resterooms * (factorzone[0] / totalfactorzone)));
-        allsize.Add(resterooms - allsize[0]);
+        Debug.Log(total);
+        Debug.Log(resterooms);
 
         int startroom = 1;
-        int endroom = fixedfirstzonesize;
-        
-        interval.Add((startroom, endroom));
+    
+        interval.Add((startroom, fixedfirstzonesize));
 
-        for (int i = 0; i < totalzones; i++)
-        {
-            startroom = endroom + 1;
-            endroom = startroom + allsize[i] - 1;
-            interval.Add((startroom, endroom));
-        }
+        interval.Add((fixedfirstzonesize+1, resterooms/2+2));
         
+        interval.Add((resterooms/2+2+1, total-2));
+    
         interval.Add((total, total));
-        
-        foreach (var (start, end) in interval)
+
+        foreach (var (pos1, pos2) in interval)
         {
-            compteurzone++;
+            Debug.Log("_________");
+            Debug.Log(pos1);
+            Debug.Log(pos2);
         }
-        
+    
+        compteurzone = interval.Count;
     }
+
     
     
     
 
-    public void placeobjects(String objet, Vector2Int objectsize, int min, int max, int nbrobjetmin, int nbrobjetmax=-2, bool ActivateBorder = false, bool ActivateAround = false)
+    public void placeobjects(String objet, int min, int max, int nbrobjetmin, int nbrobjetmax=-2, bool ActivateBorder = false, bool ActivateAround = false)
     {
         
 
@@ -125,11 +149,20 @@ public class PlaceObject : MonoBehaviour
                             Vector2Int findpos = allroompos[posrandom];
                             bool canplaceobjet = true;
                             dirobject.Clear();
-
+                            List<Vector2Int> choosedir = new List<Vector2Int>();
 
                             if (objet == "caisse")
                             {
-                                foreach (var dir in alldirection_diagonale)
+                                choosedir = alldirection_diagonale;
+                            }
+                            else if (objet == "wolf")
+                            {
+                                choosedir = dir.alldirection_wolf;
+                            }
+
+                            if (choosedir.Count != 0)
+                            {
+                                foreach (var dir in choosedir)
                                 {
                                     if (allobjet.Contains(findpos + dir))
                                     {
@@ -182,7 +215,7 @@ public class PlaceObject : MonoBehaviour
 
                             if (canplaceobjet)
                             {
-                                if (objet == "caisse")
+                                if (choosedir.Count != 0)
                                 {
                                     allobjet.UnionWith(dirobject);
                                 }
@@ -209,81 +242,89 @@ public class PlaceObject : MonoBehaviour
                     {
                         int nbrobjectperrooms = Random.Range(nbrobjetmin, nbrobjetmax + 1);
                         int placedObjects = 0;
-                        maxAttempts = 1000000;
-                        while(placedObjects < nbrobjectperrooms)
+                        maxAttempts = 100000;
+                        while (placedObjects < nbrobjectperrooms)
                         {
                             int posrandom = Random.Range(0, allroompos.Count);
                             Vector2Int findpos = allroompos[posrandom];
-                            bool doblebojet = false;
-                            bool around = false;
-                            HashSet<Vector2Int> dirobject = new HashSet<Vector2Int>();
-
+                            bool canplaceobjet = true;
+                            dirobject.Clear();
+                            List<Vector2Int> choosedir = new List<Vector2Int>();
 
                             if (objet == "caisse")
                             {
-                                foreach (var dir in alldirection_diagonale)
+                                choosedir = alldirection_diagonale;
+                            }
+                            else if (objet == "wolf")
+                            {
+                                choosedir = dir.alldirection_wolf;
+                            }
+
+                            if (choosedir.Count != 0)
+                            {
+                                foreach (var dir in choosedir)
                                 {
                                     if (allobjet.Contains(findpos + dir))
                                     {
-                                        doblebojet = true;
+                                        canplaceobjet = false;
                                     }
 
                                     if (allcorridors.Contains(findpos + dir))
                                     {
-                                        doblebojet = true;
+                                        canplaceobjet = false;
                                     }
 
-                                    if (doblebojet)
+                                    if (!canplaceobjet)
                                     {
                                         break;
                                     }
+
                                     dirobject.Add(findpos + dir);
                                 }
                             }
 
                             if (allobjet.Contains(findpos))
                             {
-                                doblebojet = true;
+                                canplaceobjet = false;
                             }
 
                             if (allcorridors.Contains(findpos))
                             {
-                                doblebojet = true;
+                                canplaceobjet = false;
                             }
                             
-                            
-                            // if (ActivateAround)
-                            // {
-                            //     foreach (var dir in alldirection_diagonale)
-                            //     {
-                            //         foreach (var (nameobjet,allposobjet) in posobjects)
-                            //         {
-                            //             foreach (var posbjet in allposobjet)
-                            //             {
-                            //                 if (posbjet == findpos+dir)
-                            //                 {
-                            //                     around = true;
-                            //                     break;
-                            //                 }
-                            //                 
-                            //             }
-                            //             if (doblebojet) break;
-                            //         }
-                            //     }
-                            //     
-                            // }
-                            
-                            if (!doblebojet)
+
+                            if (ActivateAround)
                             {
-                                if (objet == "caisse")
+                                foreach (var dir in alldirection_diagonale)
+                                {
+                                    if (allobjet.Contains(findpos + dir))
+                                    {
+                                        canplaceobjet = false;
+                                        Debug.Log("f");
+                                    }
+                                    if (!canplaceobjet)
+                                    {
+                                        break;
+                                    }
+
+                                    dirobject.Add(findpos + dir);
+                                }
+                                
+                            }
+
+                            if (canplaceobjet)
+                            {
+                                if (choosedir.Count != 0)
                                 {
                                     allobjet.UnionWith(dirobject);
                                 }
+
                                 allobjet.Add(findpos);
                                 posobjects[objet].Add(findpos);
                                 placedObjects++;
                             }
-                            
+
                             maxAttempts--;
                             if (maxAttempts == 0)
                             {

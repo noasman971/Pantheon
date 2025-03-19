@@ -6,7 +6,25 @@ public class Item : MonoBehaviour
 {
     public Sprite icon;
     public string nameItem;
+
+    public int minamount;
+    public int maxamount = 0;
     public int amount;
+
+    void Start()
+    {
+        if (maxamount==0)
+        {
+            maxamount = minamount;
+        }
+
+
+        if (minamount != 0)
+        {
+            amount = Random.Range(minamount, maxamount);
+        }
+    }
+    
     public bool isUsed;
 
     public virtual void AddItemToInventory()

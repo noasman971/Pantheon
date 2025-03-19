@@ -11,5 +11,7 @@ public class AllObject : MonoBehaviour
         pilier,
         pique,
         caisse,
+        wolf,
+        echelle,
         test;
 }

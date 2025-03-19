@@ -102,36 +102,45 @@ public class EnemyBase : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
             anim.Play("Dead");
-            if (anim.speed == 0 && Input.GetKeyDown(KeyCode.M))
+            if (SceneManager.GetActiveScene().name == "Mael")
             {
                 anim.speed = 1;
+            }
+            else
+            {
+                if (anim.speed == 0 && Input.GetKeyDown(KeyCode.M))
+                {
+                    anim.speed = 1;
                 
 
-            }
+                }
 
-            if (anim.speed == 0 && Input.GetKeyDown(KeyCode.C))
-            {
-                if (Randoms())
+                if (anim.speed == 0 && Input.GetKeyDown(KeyCode.C))
                 {
-                    Debug.Log("true capture");
-                    listKatara.AddKatara(gameObject.name);
-                    if (!listAttaque.attack.Contains(attackDrop.name))
+                    if (Randoms())
                     {
-                        listAttaque.AddAttack(attackDrop.name);
+                        Debug.Log("true capture");
+                        listKatara.AddKatara(gameObject.name);
+                        if (!listAttaque.attack.Contains(attackDrop.name))
+                        {
+                            listAttaque.AddAttack(attackDrop.name);
+                        }
+                        Destroy(gameObject);
+                        SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
+                        PlayerPrefs.SetInt("Loaded", 1);
+
+
                     }
-                    Destroy(gameObject);
-                    SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
-                    PlayerPrefs.SetInt("Loaded", 1);
+                    else
+                    {
+                        //anim.speed = 1;
 
-
-                }
-                else
-                {
-                    //anim.speed = 1;
-
-                    Debug.Log("false capture");
+                        Debug.Log("false capture");
+                    }
                 }
             }
+
+            
         }
     }
     
@@ -219,9 +228,17 @@ public class EnemyBase : MonoBehaviour
     /// </summary>
     public void EndDeathAnimation()
     {
-        anim.speed = 0;       
-        SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
-        PlayerPrefs.SetInt("Loaded", 1);
+        
+        if (SceneManager.GetActiveScene().name != "Mael")
+        {
+            SceneManager.LoadScene(PlayerPrefs.GetString("scene"));
+            PlayerPrefs.SetInt("Loaded", 1);
+
+        }
+        else
+        {
+            anim.speed = 0;
+        }
 
     }
 

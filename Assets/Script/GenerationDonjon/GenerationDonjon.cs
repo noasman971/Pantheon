@@ -70,6 +70,7 @@ public class GenerationDonjon : MonoBehaviour
     
     Vector2Int start = new (0, 0);
     
+    
     public void GenerateMap()
     {
         // Clear the tilemaps
@@ -162,18 +163,7 @@ public class GenerationDonjon : MonoBehaviour
         ro.stockposrooms();
         ro.stockposroomsneight();
         po.compteurzone = 0;
-        po.intervalobject();
-        List<(int,int)> interval= po.interval;
         
-        
-        // po.placeobjects("pique",new Vector2Int(1,1), interval[1].Item1,interval[1].Item2, 3,  ActivateBorder: false, ActivateAround:false);
-        po.placeobjects("caisse", new Vector2Int(2,2), 0,0, 20,ActivateBorder: false, ActivateAround:false);
-        po.placeobjects("caillou",new Vector2Int(1,1), 0,0, 0,ActivateBorder: false, ActivateAround:false);
-        if (po.maxAttempts == 0)
-        {
-            Debug.Log("Impossible de placer les objets");
-            return;
-        }
         
         foreach (var pos in positions)
         {
@@ -450,6 +440,23 @@ public class GenerationDonjon : MonoBehaviour
             }
         }
         
+        po.intervalobject();
+        List<(int,int)> interval= po.interval;
+        
+        po.placeobjects("caisse", interval[0].Item1,interval[0].Item2, 1, 2,ActivateBorder: false, ActivateAround:false);
+        po.placeobjects("caillou",interval[0].Item1,interval[0].Item2, 2, 3,ActivateBorder: false, ActivateAround:false);
+        po.placeobjects("pilier", interval[1].Item1,interval[1].Item2, 2,  ActivateBorder: true, ActivateAround:false);
+        po.placeobjects("pique", interval[1].Item1,interval[1].Item2, 8, 10,  ActivateBorder: false, ActivateAround:false);
+        po.placeobjects("wolf", interval[1].Item1,interval[1].Item2, 2,  ActivateBorder: false, ActivateAround:false);
+        po.placeobjects("caillou",interval[2].Item1,interval[2].Item2, 10, 12,ActivateBorder: false, ActivateAround:false);
+        
+        if (po.maxAttempts == 0)
+        {
+            Debug.Log("Impossible de placer les objets");
+            return;
+        }
+
+        
         if (at.parentFolder == null)
         {
             at.parentFolder = new GameObject("GeneratedObjects");
@@ -467,15 +474,28 @@ public class GenerationDonjon : MonoBehaviour
                     else if (name_object == "pilier")
                     {
                          objet = at.pilier;
-                         Vector3 worldPosition = sol.CellToWorld((Vector3Int)allposobject[i]);
-                         GameObject newObject = Instantiate(objet, worldPosition, Quaternion.identity);
-                         newObject.name = $"{name_object}_{i}";
-                         newObject.transform.SetParent(at.parentFolder.transform);
-                         spawnedobjects.Add(newObject);
                     }
                     else if (name_object == "pique")
                     {
                         objet = at.pique;
+                    }
+                    else if (name_object == "wolf")
+                    {
+                        objet = at.wolf;
+                        
+                    }
+                    else if (name_object == "echelle")
+                    {
+                        objet = at.echelle;
+                    }
+                    else if (name_object == "pilier")
+                    {
+                        objet = at.pilier;
+                        Vector3 worldPosition = sol.CellToWorld((Vector3Int)allposobject[i]);
+                        GameObject newObject = Instantiate(objet, worldPosition, Quaternion.identity);
+                        newObject.name = $"{name_object}_{i}";
+                        newObject.transform.SetParent(at.parentFolder.transform);
+                        spawnedobjects.Add(newObject);
                     }
                     else if (name_object == "caisse")
                     {
@@ -487,7 +507,7 @@ public class GenerationDonjon : MonoBehaviour
                         spawnedobjects.Add(newObject);
                     }
 
-                    if (name_object != "caisse")
+                    if (name_object != "caisse" && name_object != "pilier" )
                     {
                         Vector3 worldPosition = sol.CellToWorld((Vector3Int)allposobject[i]) + new Vector3(0.5f, 0.5f, 0);
                         GameObject newObject = Instantiate(objet, worldPosition, Quaternion.identity);
@@ -503,7 +523,23 @@ public class GenerationDonjon : MonoBehaviour
             Vector3 worldPosition = sol.CellToWorld((Vector3Int)pos);
             GameObject newObject = Instantiate(at.test, worldPosition, Quaternion.identity);
             newObject.name = "test";
+            newObject.transform.SetParent(at.parentFolder.transform);
             spawnedobjects.Add(newObject);
+        }
+        
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+
+        foreach (GameObject obj in allObjects)
+        {
+            // Vérifie le nom et la position
+            if (obj.name == "New Game Object")
+            {
+#if UNITY_EDITOR
+                DestroyImmediate(obj); // Utilisé en mode éditeur
+#else
+                Destroy(obj); // Utilisé en mode Play
+#endif
+            }
         }
     }
 
