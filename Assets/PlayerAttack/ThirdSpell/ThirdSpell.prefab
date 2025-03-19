@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bfe1dc834d41ea48abfa9a3954ece40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
+  damage: 35
   speedAfter: 0
   parent: {fileID: 8259614041239614226}
 --- !u!61 &3624409737894816336
@@ -306,5 +306,4 @@ MonoBehaviour:
   cost: 500
   target: {fileID: 0}
   playerStats: {fileID: 0}
-  speed: 0
   flip: 1

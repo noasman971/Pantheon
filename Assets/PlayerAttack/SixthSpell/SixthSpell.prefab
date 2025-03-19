@@ -128,7 +128,6 @@ MonoBehaviour:
   cost: 800
   target: {fileID: 0}
   playerStats: {fileID: 0}
-  speed: 0
   flip: 1
 --- !u!1 &2266666082604748987
 GameObject:
@@ -259,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bfe1dc834d41ea48abfa9a3954ece40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 45
+  damage: 65
   speedAfter: 0
   parent: {fileID: 2113842407584498841}
 --- !u!61 &6313940179002831273

@@ -290,16 +290,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508d69daba056724ea7051c642fe3cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 500
+  health: 2500
   maxHealth: 0
-  speed: 5
+  speed: 3.5
   maxSpeed: 0
   attackCooldown: 2
   isDead: 0
   isAttacking: 0
   lastAttackTime: 0
-  damage_atk1: 100
-  damage_atk2: 140
+  damage_atk1: 90
+  damage_atk2: 150
   damage_special: 20
   atk1: 0
   atk2: 0
