@@ -21,6 +21,7 @@ public class buttoncontroller : MonoBehaviour
         loadButton.SetActive(false);
         playerStats = player.GetComponent<PlayerStats>();
 
+        Cursor.visible = true;
 
     }
 
