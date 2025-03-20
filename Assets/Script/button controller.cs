@@ -10,6 +10,7 @@ public class buttoncontroller : MonoBehaviour
     public GameObject player;
     public ListKatara listKatara;
     public ListAttaque listAttaque;
+    public PlayerStats playerStats;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class buttoncontroller : MonoBehaviour
         listKatara = player.GetComponent<ListKatara>();
         newGameButton.SetActive(false);
         loadButton.SetActive(false);
+        playerStats = player.GetComponent<PlayerStats>();
 
 
     }
@@ -59,6 +61,7 @@ public class buttoncontroller : MonoBehaviour
         PlayerPrefs.SetFloat("positionX",  -24f);
         PlayerPrefs.SetFloat("positionY",  4.25f);
         PlayerPrefs.SetFloat("positionZ",  0);
+        PlayerPrefs.SetFloat("currenthealth", playerStats.maxhealth);
         PlayerPrefs.Save();
         SceneManager.LoadScene("Starter");
         

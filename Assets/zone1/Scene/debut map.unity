@@ -1025,7 +1025,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10000
   m_TargetDisplay: 0
 --- !u!224 &91064376
 RectTransform:
@@ -2905,6 +2905,8 @@ MonoBehaviour:
   - "T \u2192 Parler aux PNJ"
   - "Y, U, I, J, K, L \u2192 Utiliser les attaques, attribu\xE9es dans l\u2019ordre
     o\xF9 tu les obtiens"
+  - "C \u2192 Pour essayer de capturer le katara"
+  - "M \u2192 Pour tuer le katara"
   characterName: Grand Sage
 --- !u!61 &275263888
 BoxCollider2D:
@@ -13400,7 +13402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -19356,7 +19358,7 @@ Transform:
   m_GameObject: {fileID: 1288249824}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.518753, y: 5.781497, z: 0}
+  m_LocalPosition: {x: -9.97, y: -8.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24894,7 +24896,7 @@ Transform:
   m_GameObject: {fileID: 1737776501}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.82, y: -3.9, z: 0}
+  m_LocalPosition: {x: -1.71, y: -18.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

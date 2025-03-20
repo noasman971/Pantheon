@@ -1232,6 +1232,7 @@ MonoBehaviour:
   player: {fileID: 1888849014}
   listKatara: {fileID: 0}
   listAttaque: {fileID: 0}
+  playerStats: {fileID: 0}
 --- !u!1 &1180493973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,7 +1487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a9d90da4975594d8c07a6d71d65eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  regenStamina: 1.5
+  regenStamina: 2
   maxstamina: 1000
   currentstamina: 0
   maxhealth: 2000
@@ -1503,6 +1504,8 @@ MonoBehaviour:
   isAttacking: 0
   currentSpeed: 0
   moveBlock: 0
+  canLoad: 0
+  loaded: 0
 --- !u!114 &1888849019
 MonoBehaviour:
   m_ObjectHideFlags: 0

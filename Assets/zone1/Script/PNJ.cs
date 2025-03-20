@@ -33,6 +33,8 @@ public class PNJ : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.T) && canDial)
         {
+            Cursor.visible = true;
+
             StartDialogue();
 
         }
@@ -103,6 +105,8 @@ public class PNJ : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            Cursor.visible = false;
+
             canDial = false;
         }
     }

@@ -14,7 +14,7 @@ public class Spell1 : MonoBehaviour, Attackable
     {
         target = GameObject.FindGameObjectWithTag("Player");
         playerStats = target.GetComponent<PlayerStats>();
-        if (SceneManager.GetActiveScene().name == "fight")
+        if (SceneManager.GetActiveScene().name == "fight" || SceneManager.GetActiveScene().name == "MapBossFinal" || SceneManager.GetActiveScene().name == "Dungeon")
         {
             stats = GameObject.FindGameObjectWithTag("Ennemy").GetComponent<Stats>();
         }
@@ -53,7 +53,7 @@ public class Spell1 : MonoBehaviour, Attackable
     public void Attack(GameObject playerRef)
     {
         PlayerStats playerStats = playerRef.GetComponent<PlayerStats>();
-        if (playerStats.currentstamina > cost && (SceneManager.GetActiveScene().name == "fight" || SceneManager.GetActiveScene().name == "Dungeon"))
+        if (playerStats.currentstamina > cost && (SceneManager.GetActiveScene().name == "fight" || SceneManager.GetActiveScene().name == "Dungeon" || SceneManager.GetActiveScene().name == "MapBossFinal" ))
         {
             playerStats.isAttacking = true;
             GameObject newSpell = Instantiate(this.gameObject, playerRef.transform.position, Quaternion.identity);

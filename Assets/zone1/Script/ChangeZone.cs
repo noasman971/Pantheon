@@ -23,6 +23,13 @@ public class ChangeZone : MonoBehaviour
     /// </summary>
     public void ChangeScene()
     {
+        PlayerPrefs.SetString("scene", SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetFloat("positionX",  transform.position.x);
+        PlayerPrefs.SetFloat("positionY",  transform.position.y);
+        PlayerPrefs.SetFloat("positionZ",  transform.position.z);
+        PlayerPrefs.SetInt("canLoad",  1);
+        PlayerPrefs.Save();
+        Debug.Log("Save");
         SceneManager.LoadScene(sceneName);
     }
 }
