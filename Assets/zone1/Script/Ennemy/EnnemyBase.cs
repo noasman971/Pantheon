@@ -239,6 +239,11 @@ public class EnemyBase : MonoBehaviour
             PlayerPrefs.SetInt("Loaded", 1);
             
         }
+
+        if (SceneManager.GetActiveScene().name == "MapBossFinal")
+        {
+            SceneManager.LoadScene("FirstZone");
+        }
         else
         {
             Destroy(gameObject);
